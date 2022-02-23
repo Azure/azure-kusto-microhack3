@@ -10,21 +10,27 @@ This Microhack is organised into the following 3 challenges:
 
 #### Challenge 1: Materialized views, Functions, External Tables
 
-##### Task 1: Create LKV materialized view
+##### Task 1: Materialized view
 
 Instead of writing a query every time to retrieve the last known value for every device, create a materialized view containing the last known value for every device
 
 [Materialized views - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview)
 [Create materialized view - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-create)
 
-##### Task 2: Create materialized view of aggregated data
+##### Task 2: Query Materialized View
 
+Write a query that retreives the top 10 devices with the highest last known temperature
+
+##### Task 3: User defined Functions
+
+
+##### Task 4: Stored Functions
+
+
+##### Task 5: External Tables
 
 
 #### Challenge 2: Caching and retention policies
-
-
-##### Task 1: Cache and retention policies - concepts
 
 Among the different policies you can set to the ADX cluster, two policies are of particular importance: retention policy (retention period) and cache policy (cache period).
 First, a policy, is what’s  used to enforce and control the properties of the cluster (or the database/table.)
@@ -35,7 +41,7 @@ The **cache** policy, is the time span, in days, for which to keep recently inge
 
 All the data is always stored in the cold cache, for the duration defined in the retention policy. Any data whose age falls within the hot cache policy will also be stored in the hot cache. If you query data from cold cache, it’s recommended to target a small specific range in time (“point in time”) for queries to be efficient.
 
-##### Task 2: Change the cache policy via the Azure portal (data base level)
+##### Task 1: Change the cache policy via the Azure portal (data base level)
 Go to your Azure Data Explorer cluster resource in the Azure portal. Click on the “Databases” blade
 
 ![Screen capture 1](/assets/images/MH3-Challenge2-Task2-Pic1.png)
@@ -44,7 +50,7 @@ Click on the database name. The database page opens. Select "Edit" from the top 
 
 ![Screen capture 1](/assets/images/MH3-Challenge2-Task2-Pic2.png)
  
-##### Task 3: change the cache policy via commands (data base or table level)
+##### Task 2: change the cache policy via commands (data base or table level)
 
 Database policies can be overridden per table using a KQL control command.
 ADX cluster and database are Azure resources. A database is a sub-resource of the cluster, so it can be edited from the portal. Tables are not considered an Azure resource, so they cannot be managed in the portal but via a KQL command.    
@@ -54,7 +60,7 @@ Alter the cache policy of the table LogisticsTelemetryExtended to 60 days.
 
 [.alter table cache policy command - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/alter-table-cache-policy-command)
 
-##### Task 4: Query cold data with hot windows
+##### Task 3: Query cold data with hot windows
 Although querying cold data is possible, the data is queried faster when it's in local SSD (the hot cache), particularly for range queries that scan large amounts of data. 
 
 To query cold data, ADX process a loading step that requires accessing a storage tier with much higher latency than the local disk. When the query is limited to a small time window, often called "point-in-time" queries, the amount of data to be retrieved will usually be small, and the query will complete quickly. For example, forensic analyses querying telemetry on a given day in the past fall under this category. The impact on the query duration depends on the size of data that is pulled from storage, and can be significant. 
