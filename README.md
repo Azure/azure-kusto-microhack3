@@ -10,6 +10,10 @@ This Microhack is organised into the following 3 challenges:
 
 #### Challenge 1: Materialized views, Functions, External Tables
 
+**Materialized views** expose an **aggregation query** over a source table, or over another materialized view. Materialized views always **return an up-to-date result** of the aggregation query (always fresh). Querying a materialized view is **more performant than running the aggregation directly** over the source table.
+
+User-defined functions are reusable subqueries that can be defined as **part of the query itself (ad-hoc functions)**, or persisted as part of the **database metadata (stored functions)**. User-defined functions are invoked through a name, are provided with zero or more input arguments (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function body.
+
 ##### Task 1: Materialized view
 
 Instead of writing a query every time to retrieve the last known value for every device, create a materialized view containing the last known value for every device
@@ -131,7 +135,68 @@ Scaling down can harm your cluster performance. Each SKU offers a distinct SSD a
 
 [Choosing Cluster SKU](https://docs.microsoft.com/en-us/azure/data-explorer/manage-cluster-choose-sku)
 
-#### Challenge 5: Security
+#### Challenge 5: Security (Access control)
+
+Authorization (Cluster, Table level permissions)
+
+Security roles define which security principals (users and applications) have permissions to operate on a secured resource such as a database or a table, and what operations are permitted. For example, principals that have the database viewer security role for a specific database can query and view all entities of that database. Managing the permissions of database table is part of the data plane management.
+
+##### Task 1: Principals
+
+Run a command to list the principals that are set on the table LogisticsTelemetryExtended.
+
+##### Task 2: Assigning roles
+
+Run a command to set a database "view" role to one of your colleagues who participates in the microhack. After granting the permission, make sure the colleague has access to the table. Later, we will see how you can use Row Level Security to restrict aces.
+
+[Security Roles](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles)
+
+In addition to the control commands, the database permissions can be set via the Azure portal. Go to “Databases” blade from the cluster page, select the data base, and click on the “permissions” blade. 
+
+In addition to the data plane management, you can manage the permissions of the entire cluster. This is part of the control plane permissions.
+
+[Principals and Identity Providers](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/access-control/principals-and-identity-providers)
+
+Cluster level permissions (for example, set admin permissions on all the databases) can be modified via the Azure portal (or the Azure CLI, or ARM REST API). You cannot use control commands to set cluster-level permissions.
+To set these permissions, go to your cluster page in the Azure portal, and click on the “permissions blade” (under Security + networking)
+
+[Role based Authorization](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/access-control/role-based-authorization)
+
+#### Challenge 6: Row Level Security (RLS)
+
+You can use Azure Active Directory group membership or principal details to control access to rows in a specific table.
+To do so, you first create a function. This function will be later applied to the row level security (RLS) policy of your table. Once the RLS policy is enabled on a table, access is entirely replaced by the RLS function that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types of users to whom you want to give access. 
+
+Example:
+```
+.create-or-alter function RLSForLogisticsTelemetry (){
+let IsInGroup = current_principal_is_member_of('aadgroup=group@fake_domain.com');
+LogisticsTelemetryExtended | where (IsInGroup);
+}
+```
+The following functions are often useful for row_level_security queries:
+
+- [current_principal()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/current-principalfunction?pivots=azuredataexplorer)
+- [current_principal_details()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/current-principal-detailsfunction)
+- [current_principal_is_member_of()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/current-principal-ismemberoffunction?pivots=azuredataexplorer)
+
+Then, you enable the table's row_level_security policy, and use the function that will be run as part of the policy. 
+
+For example:
+```
+.alter table LogisticsTelemetryExtended policy row_level_security enable "RLSForLogisticsTelemetry"
+```
+
+Now, try querying the table, and see whether the policy filtered the results.
+
+```
+LogisticsTelemetryExtended | count 
+```
+##### Task 1:
+Your colleague who was given access to the database in the previous challenge should no longer have access to it. Change the RLS function accordingly.
+Be sure they receive no results when they query the table.
+
+[RLS Policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/rowlevelsecuritypolicy)
 
 
 ## Contributing
