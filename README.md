@@ -23,6 +23,7 @@ Instead of writing a query every time to retrieve the last known value for every
 
 #### Challenge 2: Caching and retention policies
 
+
 ##### Task 1: Cache and retention policies - concepts
 
 Among the different policies you can set to the ADX cluster, two policies are of particular importance: retention policy (retention period) and cache policy (cache period).
