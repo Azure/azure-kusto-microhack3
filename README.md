@@ -5,7 +5,8 @@ This Microhack is organised into the following 3 challenges:
 - Challenge 2: Caching and retention policies
 - Challenge 3: Control commands
 - Challenge 4: Cluster autoScaling
-- Challenge 5: Security
+- Challenge 5: Security (Access control)
+- Challenge 6: Security (Row level security)
 
 
 #### Challenge 1: Materialized views, Functions, External Tables
