@@ -85,9 +85,7 @@ Control commands used to manage Azure Data Explorer. Control commands are reques
 The first character of the text of a request determines if the request is a control command or a query. Control commands must start with the dot (.) character, and no query may start by that character.
 
 The ‘.show queries’ command returns a list of queries that have reached a final state, and that the user invoking the command has access to see.
-The ‘.show commands command returns a table of the admin commands that have reached a final state.  The commands table has two columns with resources consumption details of every completed command.
-TotalCpu - The total CPU clock time (User mode + Kernel mode) consumed by this command.
-ResourceUtilization - Contains all resource use information related to that command, including the TotalCpu.
+The ‘.show commands command returns a table of the admin commands that have reached a final state.  The TotalCpu columns  is the value of the total CPU clock time (User mode + Kernel mode) consumed by this command.
 
 ##### Task 2: more .show commands
 
