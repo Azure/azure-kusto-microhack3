@@ -53,11 +53,11 @@ All the data is always stored in the cold cache, for the duration defined in the
 ##### Task 1: Change the cache policy via the Azure portal (data base level)
 Go to your Azure Data Explorer cluster resource in the Azure portal. Click on the “Databases” blade
 
-![Screen capture 1](/assets/images/MH3-Challenge2-Task2-Pic1.png)
+<img src="/assets/imaegs/EditCache.png" width="600">
 
 Click on the database name. The database page opens. Select "Edit" from the top menu. The side pane allows you to edit the retention and caching periods (policies) of the database. Change the retention to 365 days and the cache to 31 days, and save.
 
-![Screen capture 1](/assets/images/MH3-Challenge2-Task2-Pic2.png)
+<img src="/assets/imaegs/DatabasesBlade.png" width="600">
  
 ##### Task 2: change the cache policy via commands (data base or table level)
 
