@@ -10,10 +10,7 @@ This Microhack is organised into the following 3 challenges:
 
 ---
 ---
-<details>
-<summary>Challenge 1: Materialized views, Functions, External Tables</summary>
-  
-  
+## Challenge 1: Materialized views, Functions, External Tables
 
 **Materialized views** expose an **aggregation query** over a source table, or over another materialized view. Materialized views always **return an up-to-date result** of the aggregation query (always fresh). Querying a materialized view is **more performant than running the aggregation directly** over the source table.
 
@@ -46,7 +43,6 @@ In Microhack 1, task 3, you used the “One-click” UI (User Interfaces) to cre
 After creating the external table, write some queries and make sure the external table works. </br>
 For general information about external tables, please refer to [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data)
 
-</details>
 ---
 ---
 ## Challenge 2: Caching and retention policies
