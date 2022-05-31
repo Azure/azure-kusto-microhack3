@@ -14,6 +14,7 @@ This Microhack is organised into the following 3 challenges:
 **Materialized views** expose an **aggregation query** over a source table, or over another materialized view. Materialized views always **return an up-to-date result** of the aggregation query (always fresh). Querying a materialized view is **more performant than running the aggregation directly** over the source table.
 
 User-defined functions are reusable subqueries that can be defined as **part of the query itself (ad-hoc functions)**, or persisted as part of the **database metadata (stored functions)**. User-defined functions are invoked through a name, are provided with zero or more input arguments (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function body.
+
 ---
 ### Task 1: Materialized view
 
