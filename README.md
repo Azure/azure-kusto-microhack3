@@ -125,6 +125,7 @@ In the Azure portal, go to your Azure Data Explorer cluster resource. Under Sett
 In the Scale out window, you can select the autoscale method that you want: Manual scale, Optimized autoscale, or Custom autoscale.
 Optimized autoscale is the recommended autoscale method. This method optimizes cluster performance and costs. If the cluster approaches a state of under-utilization, it will be scaled in. This action lowers costs but keeps performance level. If the cluster approaches a state of over-utilization, it will be scaled out to maintain optimal performance. 
 To configure Optimized autoscale: select the Optimized autoscale option. Then, select a minimum instance count and a maximum instance count. The cluster auto-scaling ranges between those two numbers, based on load.
+<img src="/assets/imaegs/ScaleOut.png" width="300">
 
 [Optimized Autoscale](https://docs.microsoft.com/en-us/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale)
 
@@ -135,7 +136,7 @@ To Configure vertical scaling, in the Azure portal, go to your Azure Data Explor
 In the Scale up window, you will see a list of available SKUs for your cluster.
 Please note that the vertical scaling process can take up to 30 minutes, and during that time your cluster will be suspended.
 Scaling down can harm your cluster performance. Each SKU offers a distinct SSD and CPU ratio to help you correctly size their deployment and build cost optimal solutions for their enterprise analytical workload.  There are four types of SKUs: types of storage optimized, compute optimized, heavy compute and isolated compute.
-
+<img src="/assets/imaegs/ScaleUp.png" width="300">
 [Choosing Cluster SKU](https://docs.microsoft.com/en-us/azure/data-explorer/manage-cluster-choose-sku)
 
 #### Challenge 5: Security (Access control)
