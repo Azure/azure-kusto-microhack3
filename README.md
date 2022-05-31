@@ -230,7 +230,7 @@ Be sure they receive no results when they query the table.
 
 
 <details>
-<summary><b>Contributing?</b></summary><br>
+<summary><b>Contributing</b></summary><br>
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
@@ -246,7 +246,7 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 </details>
   
 <details>
-<summary><b>Trademarks?</b></summary><br>
+<summary><b>Trademarks</b></summary><br>
 
 This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
 trademarks or logos is subject to and must follow 
