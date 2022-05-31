@@ -1,7 +1,7 @@
 # Microhack 3: Advanced KQL, Policies, Security 
 
 This Microhack is organised into the following 3 challenges:
-- [Challenge 1: Materialized views, Functions, External Tables](#Ch1)
+- Challenge 1: Materialized views, Functions, External Tables
 - Challenge 2: Caching and retention policies
 - Challenge 3: Control commands
 - Challenge 4: Cluster autoScaling
@@ -10,7 +10,7 @@ This Microhack is organised into the following 3 challenges:
 
 ---
 ---
-## [Challenge 1: Materialized views, Functions, External Tables](#Ch1)
+## Challenge 1: Materialized views, Functions, External Tables
 
 **Materialized views** expose an **aggregation query** over a source table, or over another materialized view. Materialized views always **return an up-to-date result** of the aggregation query (always fresh). Querying a materialized view is **more performant than running the aggregation directly** over the source table.
 
