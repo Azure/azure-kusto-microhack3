@@ -9,13 +9,13 @@ This Microhack is organised into the following 3 challenges:
 - Challenge 6: Security (Row level security)
 
 
-#### Challenge 1: Materialized views, Functions, External Tables
+## Challenge 1: Materialized views, Functions, External Tables
 
 **Materialized views** expose an **aggregation query** over a source table, or over another materialized view. Materialized views always **return an up-to-date result** of the aggregation query (always fresh). Querying a materialized view is **more performant than running the aggregation directly** over the source table.
 
 User-defined functions are reusable subqueries that can be defined as **part of the query itself (ad-hoc functions)**, or persisted as part of the **database metadata (stored functions)**. User-defined functions are invoked through a name, are provided with zero or more input arguments (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function body.
 
-##### Task 1: Materialized view
+### Task 1: Materialized view
 
 Instead of writing a query every time to retrieve the last known value for every device, create a materialized view containing the last known value for every device (the last record for each deviceId, based on the enqueuedTime column)
 
@@ -23,23 +23,23 @@ Instead of writing a query every time to retrieve the last known value for every
 [Create materialized view - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-create) </br>
 Use arg_max(). See examples for [arg_min() (aggregation function) - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/arg-min-aggfunction)
 
-##### Task 2: Query Materialized View
+### Task 2: Query Materialized View
 
 Write a query that retreives the top 10 devices with the highest last known temperature
 
-##### Task 3: User defined Functions (Stored Functions)
+### Task 3: User defined Functions (Stored Functions)
 
 In the second microhack, as part of task 9, you wrote a query that finds out how many records startswith "x" , per device ID (aggregated by device ID) and renderd a piechart. Create a stored function that will contain the code of this query. Make sure the function works. </br>
 See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/functions) article.
 
 
-##### Task 4: External Tables
+### Task 4: External Tables
 [External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) is a Kusto schema entity that references data stored outside the Azure Data Explorer database. It allows you to query data from external data stores, like Azure Blob Storage or in Azure Data Lake, without ingesting it to your Azure Data Explorer cluster. The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried. </br>
 In Microhack 1, task 3, you used the “One-click” UI (User Interfaces) to create a data connection to Azure blob storage. Use the SAS URL of the same blob storage, but this time yo'll [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table) </br>.
 After creating the external table, write some queries and make sure the external table works. </br>
 For general information about external tables, please refer to [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data)
 
-#### Challenge 2: Caching and retention policies
+## Challenge 2: Caching and retention policies
 
 Among the different policies you can set to the ADX cluster, two policies are of particular importance: retention policy (retention period) and cache policy (cache period).
 First, a policy, is what’s  used to enforce and control the properties of the cluster (or the database/table.)
@@ -50,7 +50,7 @@ The **cache** policy, is the time span, in days, for which to keep recently inge
 
 All the data is always stored in the cold cache, for the duration defined in the retention policy. Any data whose age falls within the hot cache policy will also be stored in the hot cache. If you query data from cold cache, it’s recommended to target a small specific range in time (“point in time”) for queries to be efficient.
 
-##### Task 1: Change the cache policy via the Azure portal (data base level)
+### Task 1: Change the cache policy via the Azure portal (data base level)
 Go to your Azure Data Explorer cluster resource in the Azure portal. Click on the “Databases” blade
 
 <img src="/assets/imaegs/DatabasesBlade.png" width="300">
@@ -59,7 +59,7 @@ Click on the database name. The database page opens. Select "Edit" from the top 
 
 <img src="/assets/imaegs/EditCache.png" width="400">
  
-##### Task 2: change the cache policy via commands (data base or table level)
+### Task 2: change the cache policy via commands (data base or table level)
 
 Database policies can be overridden per table using a KQL control command.
 ADX cluster and database are Azure resources. A database is a sub-resource of the cluster, so it can be edited from the portal. Tables are not considered an Azure resource, so they cannot be managed in the portal but via a KQL command.    
@@ -69,7 +69,7 @@ Alter the cache policy of the table LogisticsTelemetryExtended to 60 days.
 
 [.alter table cache policy command - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/alter-table-cache-policy-command)
 
-##### Task 3: Query cold data with hot windows
+### Task 3: Query cold data with hot windows
 Although querying cold data is possible, the data is queried faster when it's in local SSD (the hot cache), particularly for range queries that scan large amounts of data. 
 
 To query cold data, ADX process a loading step that requires accessing a storage tier with much higher latency than the local disk. When the query is limited to a small time window, often called "point-in-time" queries, the amount of data to be retrieved will usually be small, and the query will complete quickly. For example, forensic analyses querying telemetry on a given day in the past fall under this category. The impact on the query duration depends on the size of data that is pulled from storage, and can be significant. 
@@ -82,16 +82,16 @@ To try out this feature, set a hot_window between datetime(2021-01-01) .. dateti
 
 [Use hot windows for infrequent queries over cold data in Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/hot-windows)
 
-#### Challenge 3: Control commmands
+## Challenge 3: Control commmands
 
-##### Task 1: .show/diagnostic logs/Insights
+### Task 1: .show/diagnostic logs/Insights
 Control commands used to manage Azure Data Explorer. Control commands are requests to the service to retrieve information that is not necessarily data in the database tables, or to modify the service state, etc.
 The first character of the text of a request determines if the request is a control command or a query. Control commands must start with the dot (.) character, and no query may start by that character.
 
 The ‘.show queries’ command returns a list of queries that have reached a final state, and that the user invoking the command has access to see.
 The ‘.show commands command returns a table of the admin commands that have reached a final state.  The TotalCpu columns  is the value of the total CPU clock time (User mode + Kernel mode) consumed by this command.
 
-##### Task 2: more .show commands
+### Task 2: more .show commands
 
 Write a command to count the number commands of your user id, from the past 7 day.
 
@@ -102,13 +102,13 @@ Reference:
 
 [Management (control commands) overview](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/)
 
-##### Task 3: Table details
+### Task 3: Table details
 
 Write a control command to show details on all tables in the database.
 
 [.show tables](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/show-tables-command)
 
-#### Challenge 4: Cluster Autoscaling
+## Challenge 4: Cluster Autoscaling
 
 Sizing a cluster appropriately is critical to the performance of Azure Data Explorer. A static cluster size can lead to under-utilization or over-utilization, neither of which is ideal. Because demand on a cluster can’t be predicted with absolute accuracy, it's better to scale a cluster, adding and removing capacity and CPU resources with changing demand.
 
@@ -117,7 +117,7 @@ There are two workflows for scaling an Azure Data Explorer cluster:
 Horizontal scaling, also called scaling in and out.
 Vertical scaling, also called scaling up and down. 
 
-##### Task 1: Manage cluster horizontal scaling (scale in/out)
+### Task 1: Manage cluster horizontal scaling (scale in/out)
 By using horizontal scaling, you can scale the instance count automatically, based on predefined rules and schedules. To specify the autoscale settings for your cluster:
 
 In the Azure portal, go to your Azure Data Explorer cluster resource. Under Settings, select Scale out.
@@ -129,7 +129,7 @@ To configure Optimized autoscale: select the Optimized autoscale option. Then, s
 
 [Optimized Autoscale](https://docs.microsoft.com/en-us/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale)
 
-##### Task 2: Manage cluster vertical scaling (scale up/down)
+### Task 2: Manage cluster vertical scaling (scale up/down)
 
 To Configure vertical scaling, in the Azure portal, go to your Azure Data Explorer cluster resource. Under Settings, select Scale up.
 
@@ -139,17 +139,17 @@ Scaling down can harm your cluster performance. Each SKU offers a distinct SSD a
 <img src="/assets/imaegs/ScaleUp.png" width="550"></br>
 [Choosing Cluster SKU](https://docs.microsoft.com/en-us/azure/data-explorer/manage-cluster-choose-sku)
 
-#### Challenge 5: Security (Access control)
+## Challenge 5: Security (Access control)
 
 Authorization (Cluster, Table level permissions)
 
 Security roles define which security principals (users and applications) have permissions to operate on a secured resource such as a database or a table, and what operations are permitted. For example, principals that have the database viewer security role for a specific database can query and view all entities of that database. Managing the permissions of database table is part of the data plane management.
 
-##### Task 1: Principals
+### Task 1: Principals
 
 Run a command to list the principals that are set on the table LogisticsTelemetryExtended.
 
-##### Task 2: Assigning roles
+### Task 2: Assigning roles
 
 Run a command to set a database "view" role to one of your colleagues who participates in the microhack. After granting the permission, make sure the colleague has access to the table. Later, we will see how you can use Row Level Security to restrict aces.
 
@@ -166,7 +166,7 @@ To set these permissions, go to your cluster page in the Azure portal, and click
 
 [Role based Authorization](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/access-control/role-based-authorization)
 
-#### Challenge 6: Row Level Security (RLS)
+## Challenge 6: Row Level Security (RLS)
 
 You can use Azure Active Directory group membership or principal details to control access to rows in a specific table.
 To do so, you first create a function. This function will be later applied to the row level security (RLS) policy of your table. Once the RLS policy is enabled on a table, access is entirely replaced by the RLS function that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types of users to whom you want to give access. 
@@ -196,7 +196,7 @@ Now, try querying the table, and see whether the policy filtered the results.
 ```
 LogisticsTelemetryExtended | count 
 ```
-##### Task 1:
+### Task 1:
 Your colleague who was given access to the database in the previous challenge should no longer have access to it. Change the RLS function accordingly.
 Be sure they receive no results when they query the table.
 
