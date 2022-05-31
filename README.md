@@ -11,9 +11,8 @@ This Microhack is organised into the following 3 challenges:
 ---
 ---
 <details>
-<summary><p>Challenge 1: Materialized views, Functions, External Tables<p></summary>
+<summary>Challenge 1: Materialized views, Functions, External Tables</summary>
   
-## Challenge 1: Materialized views, Functions, External Tables
 
 **Materialized views** expose an **aggregation query** over a source table, or over another materialized view. Materialized views always **return an up-to-date result** of the aggregation query (always fresh). Querying a materialized view is **more performant than running the aggregation directly** over the source table.
 
