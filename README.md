@@ -8,10 +8,6 @@ This Microhack is organised into the following 3 challenges:
 - Challenge 5: Security (Access control)
 - Challenge 6: Security (Row level security)
 
-<hr style="border: 0.3px solid green; width:40%;"></hr>
-
-
-<hr style="border:2px solid blue">
 ---
 ## Challenge 1: Materialized views, Functions, External Tables
 
