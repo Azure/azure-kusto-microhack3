@@ -15,7 +15,7 @@ This Microhack is organised into the following 3 challenges:
 
 User-defined functions are reusable subqueries that can be defined as **part of the query itself (ad-hoc functions)**, or persisted as part of the **database metadata (stored functions)**. User-defined functions are invoked through a name, are provided with zero or more input arguments (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function body.
 
-These are <b style='color:geen'>geen words</b>
+These are <b style='color:green'>green words</b>
 ##### Task 1: Materialized view
 
 Instead of writing a query every time to retrieve the last known value for every device, create a materialized view containing the last known value for every device (the last record for each deviceId, based on the enqueuedTime column)
