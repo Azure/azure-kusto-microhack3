@@ -25,26 +25,25 @@ Instead of writing a query every time to retrieve the last known value for every
 Use arg_max(). See examples for [arg_min() (aggregation function) - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/arg-min-aggfunction)
 
 ---
-
 ### Task 2: Query Materialized View
 
 Write a query that retreives the top 10 devices with the highest last known temperature
 
 ---
-
 ### Task 3: User defined Functions (Stored Functions)
 
 In the second microhack, as part of task 9, you wrote a query that finds out how many records startswith "x" , per device ID (aggregated by device ID) and renderd a piechart. Create a stored function that will contain the code of this query. Make sure the function works. </br>
 See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/functions) article.
 
 ---
-
 ### Task 4: External Tables
 [External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) is a Kusto schema entity that references data stored outside the Azure Data Explorer database. It allows you to query data from external data stores, like Azure Blob Storage or in Azure Data Lake, without ingesting it to your Azure Data Explorer cluster. The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried. </br>
 In Microhack 1, task 3, you used the “One-click” UI (User Interfaces) to create a data connection to Azure blob storage. Use the SAS URL of the same blob storage, but this time yo'll [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table) </br>.
 After creating the external table, write some queries and make sure the external table works. </br>
 For general information about external tables, please refer to [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data)
 
+---
+---
 ## Challenge 2: Caching and retention policies
 
 Among the different policies you can set to the ADX cluster, two policies are of particular importance: retention policy (retention period) and cache policy (cache period).
