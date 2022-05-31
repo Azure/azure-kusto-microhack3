@@ -1,4 +1,4 @@
-## Microhack 3: Advanced KQL, Policies, Security 
+# Microhack 3: Advanced KQL, Policies, Security 
 
 This Microhack is organised into the following 3 challenges:
 - Challenge 1: Materialized views, Functions, External Tables
