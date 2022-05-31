@@ -1,7 +1,7 @@
 # Microhack 3: Advanced KQL, Policies, Security 
 
 This Microhack is organised into the following 3 challenges:
-- Challenge 1: Materialized views, Functions, External Tables
+- [Challenge 1: Materialized views, Functions, External Tables](#Ch1)
 - Challenge 2: Caching and retention policies
 - Challenge 3: Control commands
 - Challenge 4: Cluster autoScaling
