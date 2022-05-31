@@ -11,7 +11,7 @@ This Microhack is organised into the following 3 challenges:
 ---
 ---
 <details>
-<summary>## Challenge 1: Materialized views, Functions, External Tables</summary><br>
+<summary><p>Challenge 1: Materialized views, Functions, External Tables<p></summary><br>
   
 ## Challenge 1: Materialized views, Functions, External Tables
 
