@@ -11,9 +11,12 @@ This Microhack is organised into the following 3 challenges:
 ---
 ## Challenge 1: Materialized views, Functions, External Tables
 
-**Materialized views** expose an **aggregation query** over a source table, or over another materialized view. Materialized views always **return an up-to-date result** of the aggregation query (always fresh). Querying a materialized view is **more performant than running the aggregation directly** over the source table.
+In this chalenge we will use 3 capbilities of Azure DAta Explorer:
+- **Materialized views** expose an **aggregation query** over a source table, or over another materialized view. Materialized views always **return an up-to-date result** of the aggregation query (always fresh). Querying a materialized view is **more performant than running the aggregation directly** over the source table.
 
-User-defined functions are reusable subqueries that can be defined as **part of the query itself (ad-hoc functions)**, or persisted as part of the **database metadata (stored functions)**. User-defined functions are invoked through a name, are provided with zero or more input arguments (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function body.
+- User-defined functions are reusable subqueries that can be defined as **part of the query itself (ad-hoc functions)**, or persisted as part of the **database metadata (stored functions)**. User-defined functions are invoked through a name, are provided with zero or more input arguments (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function body.
+
+- [External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) is a Kusto schema entity that references data stored outside the Azure Data Explorer database. It allows you to query data from external data stores, like Azure Blob Storage or in Azure Data Lake, without ingesting it to your Azure Data Explorer cluster. The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried. 
 
 ---
 ### Task 1: Materialized view
@@ -37,7 +40,7 @@ See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/k
 
 ---
 ### Task 4: External Tables
-[External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) is a Kusto schema entity that references data stored outside the Azure Data Explorer database. It allows you to query data from external data stores, like Azure Blob Storage or in Azure Data Lake, without ingesting it to your Azure Data Explorer cluster. The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried. </br>
+
 In Microhack 1, task 3, you used the “One-click” UI (User Interfaces) to create a data connection to Azure blob storage. Use the SAS URL of the same blob storage, but this time yo'll [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table) </br>.
 After creating the external table, write some queries and make sure the external table works. </br>
 For general information about external tables, please refer to [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data)
