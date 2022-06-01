@@ -42,12 +42,16 @@ As part of the second microhack, task 9, you wrote a query that finds out how ma
 See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/functions) article.
 
 ---
-### Task 4: External Tables 🎓
+### Task 4: Create an external table 🎓
 
 In Microhack 1, task 3, you used the “One-click” UI (User Interfaces) to create a data connection to Azure blob storage. Use the SAS URL of the same blob storage, but this time yo'll [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table) </br>.
-After creating the [External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables), write some queries and make sure the external table works. </br>
-For general information about external tables, please refer to [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data)
+After creating the [External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) <br>
+For more information about external tables, please refer to [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data)
 
+---
+### Task 5: Querying an external table 🎓
+
+Write a query that uses the external table, and finds out how many device IDs start with "x". <br> [Querying an external table](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data#querying-an-external-table)
 
 ---
 ---
