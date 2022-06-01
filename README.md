@@ -44,9 +44,8 @@ See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/k
 ---
 ### Task 4: Create an external table 🎓
 
-In Microhack 1, task 3, you used the “One-click” UI (User Interfaces) to create a data connection to Azure blob storage. Use the SAS URL of the same blob storage, but this time yo'll [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table) </br>.
-After creating the [External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) <br>
-For more information about external tables, please refer to [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data)
+In Microhack 1, task 3, you used the “One-click” UI (User Interfaces) to create a data connection to Azure blob storage. Use the SAS URL of the same blob storage, but this time you will [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table).</br>
+For more information about external tables, please refer to [External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) and [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data)
 
 ---
 ### Task 5: Querying an external table 🎓
@@ -77,7 +76,7 @@ Click on the database name. The database page opens. Select "Edit" from the top 
 <img src="/assets/imaegs/EditCache.png" width="400">
  
  ---
-### Task 2: change the cache policy via commands (data base or table level)
+### Task 2: change the cache policy via commands (data base or table level) 🎓
 
 Database policies can be overridden per table using a KQL control command.
 ADX cluster and database are Azure resources. A database is a sub-resource of the cluster, so it can be edited from the portal. Tables are not considered an Azure resource, so they cannot be managed in the portal but via a KQL command.    
@@ -88,7 +87,7 @@ Alter the cache policy of the table LogisticsTelemetryExtended to 60 days.
 [.alter table cache policy command - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/alter-table-cache-policy-command)
 
 ---
-### Task 3: Query cold data with hot windows
+### Task 3: Query cold data with hot windows 🎓
 Although querying cold data is possible, the data is queried faster when it's in local SSD (the hot cache), particularly for range queries that scan large amounts of data. 
 
 To query cold data, ADX process a loading step that requires accessing a storage tier with much higher latency than the local disk. When the query is limited to a small time window, often called "point-in-time" queries, the amount of data to be retrieved will usually be small, and the query will complete quickly. For example, forensic analyses querying telemetry on a given day in the past fall under this category. The impact on the query duration depends on the size of data that is pulled from storage, and can be significant. 
@@ -107,26 +106,46 @@ To try out this feature, set a hot_window between datetime(2021-01-01) .. dateti
 
 ---
 ### Task 1: .show/diagnostic logs/Insights
-Control commands used to manage Azure Data Explorer. Control commands are requests to the service to retrieve information that is not necessarily data in the database tables, or to modify the service state, etc.
+Control commands are requests to the service to retrieve information that is not necessarily data in the database tables, or to modify the service state, etc. In addition, they can be used to manage Azure Data Explorer.
 The first character of the text of a request determines if the request is a control command or a query. Control commands must start with the dot (.) character, and no query may start by that character.
 
-The ‘.show queries’ command returns a list of queries that have reached a final state, and that the user invoking the command has access to see.
-The ‘.show commands command returns a table of the admin commands that have reached a final state.  The TotalCpu columns  is the value of the total CPU clock time (User mode + Kernel mode) consumed by this command.
+- The ‘.show queries’ command returns a list of queries that have reached a final state, and that the user invoking the command has access to see.
+- The ‘.show commands' command returns a table of the admin commands that have reached a final state.  The TotalCpu columns  is the value of the total CPU clock time (User mode + Kernel mode) consumed by this command.
+- The '.show journal' command return contains information about metadata operations that are done on the Azure Data Explorer database. The metadata operations can result from a control command that a user executed, or internal control commands that the system executed, such as drop extents by retention
+
 
 ---
-### Task 2: more .show commands
+### Task 2: try .show queries
 
-Write a command to count the number commands of your user id, from the past 7 day.
+Write a command to count the number queries that you run (use the User column), in the past 7 day.
 
 Reference:
 [.show queries](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/queries)
 
+[Management (control commands) overview](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/)
+
+---
+### Task 3: try .show commands
+
+Write a command to count the number commands of your user id, from the past 7 day.
+
+Reference:
 [.show commands](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/commands)
 
 [Management (control commands) overview](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/)
 
 ---
-### Task 3: Table details
+### Task 4: try .journal commands
+
+Write a command to count the number commands of your user id, from the past 7 day.
+
+Reference:
+[.show commands](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/commands)
+
+[Management (control commands) overview](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/)
+
+---
+### Task 5: Table details
 
 Write a control command to show details on all tables in the database.
 
