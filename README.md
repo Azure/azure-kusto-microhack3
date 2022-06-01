@@ -107,7 +107,8 @@ To try out this feature, set a hot_window between datetime(2021-01-01) .. dateti
 ---
 ### Task 1: .show/diagnostic logs/Insights
 Control commands are requests to the service to retrieve information that is not necessarily data in the database tables, or to modify the service state, etc. In addition, they can be used to manage Azure Data Explorer.
-The first character of the text of a request determines if the request is a control command or a query. Control commands must start with the dot (.) character, and no query may start by that character.
+The first character of the text of a request determines if the request is a control command or a query. Control commands must start with the dot (.) character, and no query may start by that character. <br>
+[Management (control commands) overview](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/)
 
 - The ‘.show queries’ command returns a list of queries that have reached a final state, and that the user invoking the command has access to see.
 - The ‘.show commands' command returns a table of the admin commands that have reached a final state.  The TotalCpu columns  is the value of the total CPU clock time (User mode + Kernel mode) consumed by this command.
@@ -115,41 +116,40 @@ The first character of the text of a request determines if the request is a cont
 
 
 ---
-### Task 2: try .show queries
+### Task 2: Use .show queries
 
 Write a command to count the number queries that you run (use the User column), in the past 7 day.
 
 Reference:
 [.show queries](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/queries)
 
-[Management (control commands) overview](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/)
+---
+### Task 3: Use .journal commands
+
+Write a command to show the details on the materlized view that you created erlier. When did you create the materlized view? <br>
+Hint: use the 'Event' and the 'EventTimestamp' columns.
+
+Reference:
+[.show journal](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/journal)
 
 ---
-### Task 3: try .show commands
+### Task 4: Use .show commands
 
-Write a command to count the number commands of your user id, from the past 7 day.
+Write a command to count the number commands that you run (use the User column), in the past 7 day.
 
 Reference:
 [.show commands](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/commands)
 
-[Management (control commands) overview](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/)
 
 ---
-### Task 4: try .journal commands
+### Task 5: Table details and size
 
-Write a command to count the number commands of your user id, from the past 7 day.
+Write a control command to show details on all tables in the database. How many tables do you have?
+What is the total original size of the data, per table? hat is the total [extent](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/extents-overview) size of the data, per table <br>
+Hint: '| extend TotalExtentSizeInMB = format_bytes(TotalExtentSize, 0, "MB")'  <br>
 
-Reference:
-[.show commands](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/commands)
-
-[Management (control commands) overview](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/)
-
----
-### Task 5: Table details
-
-Write a control command to show details on all tables in the database.
-
-[.show tables](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/show-tables-command)
+[.show table details](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/show-table-details-command) <br>
+[format_bytes()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/format-bytesfunction)
 
 ---
 ---
