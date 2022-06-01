@@ -113,7 +113,7 @@ The first character of the text of a request determines if the request is a cont
 - The ‘.show queries’ command returns a list of queries that have reached a final state, and that the user invoking the command has access to see.
 - The ‘.show commands' command returns a table of the admin commands that have reached a final state.  The TotalCpu columns  is the value of the total CPU clock time (User mode + Kernel mode) consumed by this command.
 - The '.show journal' command return contains information about metadata operations that are done on the Azure Data Explorer database. The metadata operations can result from a control command that a user executed, or internal control commands that the system executed, such as drop extents by retention
-
+- The '.show tables details' command returns  a set that contains the specified table or all tables in the database with a detailed summary of each table's properties.
 
 ---
 ### Task 2: Use .show queries
@@ -144,9 +144,9 @@ Reference:
 ---
 ### Task 5: Table details and size
 
-Write a control command to show details on all tables in the database. How many tables do you have?
-What is the total original size of the data, per table? hat is the total [extent](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/extents-overview) size of the data, per table <br>
-Hint: '| extend TotalExtentSizeInMB = format_bytes(TotalExtentSize, 0, "MB")'  <br>
+Write a control command to show details on all tables in the database. How many tables are in your cluster? <br>
+What is the original size of the data, per table? What is the [extent](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/extents-overview) size of the data, per table <br>
+Hint: | extend TotalExtentSizeInMB = format_bytes(TotalExtentSize, 0, "MB") <br>
 
 [.show table details](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/show-table-details-command) <br>
 [format_bytes()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/format-bytesfunction)
@@ -196,8 +196,8 @@ Security roles define which security principals (users and applications) have pe
 
 ---
 ### Task 1: Principals
-
-Run a command to list the principals that are set on the table LogisticsTelemetryExtended.
+Run a command to list the principals that lists all security principals which have some access to the table LogisticsTelemetryExtended.
+[Show security roles management](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#show-command)
 
 ---
 ### Task 2: Assigning roles
