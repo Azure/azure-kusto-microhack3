@@ -195,25 +195,22 @@ Authorization (Cluster, Table level permissions)
 Security roles define which security principals (users and applications) have permissions to operate on a secured resource such as a database or a table, and what operations are permitted. For example, principals that have the database viewer security role for a specific database can query and view all entities of that database. Managing the permissions of database table is part of the data plane management.
 
 ---
-### Task 1: Principals
+### Task 1: Security roles management
 Run a command to list the principals that lists all security principals which have some access to the table LogisticsTelemetryExtended.
 [Show security roles management](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#show-command)
 
 ---
 ### Task 2: Assigning roles
 
-Run a command to set a database "view" role to one of your colleagues who participates in the microhack. After granting the permission, make sure the colleague has access to the table. Later, we will see how you can use Row Level Security to restrict aces.
+Run a command to assign a database "view" role to one of your colleagues participating in the microhack. Once the permission has been granted, ensure that the colleague has access to the table. In the following sections, we will see how you can restrict the access based on row level security.
 
-[Security Roles](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles)
-
-In addition to the control commands, the database permissions can be set via the Azure portal. Go to “Databases” blade from the cluster page, select the data base, and click on the “permissions” blade. 
-
-In addition to the data plane management, you can manage the permissions of the entire cluster. This is part of the control plane permissions.
-
+[Managing database security roles](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#managing-database-security-roles)
 [Principals and Identity Providers](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/access-control/principals-and-identity-providers)
 
-Cluster level permissions (for example, set admin permissions on all the databases) can be modified via the Azure portal (or the Azure CLI, or ARM REST API). You cannot use control commands to set cluster-level permissions.
-To set these permissions, go to your cluster page in the Azure portal, and click on the “permissions blade” (under Security + networking)
+In addition to the control commands, the database permissions can also be set in the Azure portal. From the cluster page, click the "Databases" blade, select the data base, and click on the "Permissions" blade. This is the data plane management. <br>
+Apart from managing the data plane, it is also possible to manage the permissions at the cluster-level. Such cluster-level permissions are part of the control plane.<br>
+Cluster level permissions (for example, set admin permissions for *all* the databases) can be modified via the Azure portal (or via Azure CLI/ARM REST API). You cannot use control commands to set cluster-level permissions.<br>
+To set these permissions, go to your cluster page in the Azure portal, and click on the “Permissions" blade (under 'Security + networking')
 
 [Role based Authorization](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/access-control/role-based-authorization)
 
