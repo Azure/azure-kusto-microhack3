@@ -27,6 +27,8 @@ Instead of writing a query every time to retrieve the last known value for every
 [Create materialized view - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-create) </br>
 Use arg_max(). See examples of [arg_min() (aggregation function) - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/arg-min-aggfunction)
 
+🎖️
+
 -----
 ### Task 2: Materialized views queries  
 
