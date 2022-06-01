@@ -19,13 +19,15 @@ In this chalenge we will use 3 capbilities of Azure Data Explorer:
 - **External table** is a Kusto schema entity that references data stored outside the Azure Data Explorer database. It allows you to query data from external data stores, like Azure Blob Storage or in Azure Data Lake, without ingesting it to your Azure Data Explorer cluster. The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried. 
 
 ---
-### Task 1: Create a materialized view  🎖️
+### Task 1: Create a materialized view 
 
 Instead of writing a query every time to retrieve the last known value for every device, create a materialized view containing the last known value for every device (the last record for each deviceId, based on the enqueuedTime column)
 
 [Materialized views - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview) </br>
 [Create materialized view - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-create) </br>
 Use arg_max(). See examples of [arg_min() (aggregation function) - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/arg-min-aggfunction)
+
+🎖️
 
 -----
 ### Task 2: Materialized views queries  
@@ -35,11 +37,15 @@ There are 2 ways to query a materialized view: query the entire view or query th
 [Materialized views queries
 ](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview#materialized-views-queries)
 
+🎖️
+
 ---
 ### Task 3: User defined Functions (Stored Functions)
 
 As part of the second microhack, task 9, you wrote a query that finds out how many records startswith "x", per device ID (aggregated by device ID) and renderd a piechart. Create a stored function that will contain the code of this query. Make sure the function works. </br>
 See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/functions) article.
+
+🎖️
 
 ---
 ### Task 4: External Tables
@@ -47,6 +53,8 @@ See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/k
 In Microhack 1, task 3, you used the “One-click” UI (User Interfaces) to create a data connection to Azure blob storage. Use the SAS URL of the same blob storage, but this time yo'll [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table) </br>.
 After creating the [External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables), write some queries and make sure the external table works. </br>
 For general information about external tables, please refer to [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data)
+
+🎖️
 
 ---
 ---
