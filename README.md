@@ -38,20 +38,20 @@ There are 2 ways to query a materialized view: query the entire view or query th
 ---
 ### Task 3: User defined Functions (Stored Functions) 🎓
 
-As part of the second microhack, task 9, you wrote a query that finds out how many records startswith "x", per device ID (aggregated by device ID) and renderd a piechart. Create a stored function that will contain the code of this query. Make sure the function works. </br>
+As part of the second microhack, task 9, you wrote a query that finds out how many records startswith "x", per device ID (aggregated by device ID) and renderd a piechart. Create a stored function that will contain the code of this query. Make sure the function works. </br></br>
 
 See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/functions) article.
 
 ---
 ### Task 4: Create an external table 🎓
 
-In Microhack 1, task 3, you used the “One-click” UI (User Interfaces) to create a data connection to Azure blob storage. Use the SAS URL of the same blob storage, but this time you will [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table).</br>
+In Microhack 1, task 3, you used the “One-click” UI (User Interfaces) to create a data connection to Azure blob storage. Use the SAS URL of the same blob storage, but this time you will [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table).</br></br>
 For more information about external tables, please refer to [External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) and [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data)
 
 ---
 ### Task 5: Querying an external table 🎓
 
-Write a query that uses the external table you created, and finds out how many device IDs start with "x". <br> [Querying an external table](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data#querying-an-external-table)
+Write a query that uses the external table you created, and finds out how many device IDs start with "x". <br><br> [Querying an external table](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data#querying-an-external-table)
 
 ---
 ---
@@ -108,7 +108,7 @@ To try out this feature, set a hot_window between datetime(2021-01-01) .. dateti
 ---
 ### Task 1: .show/diagnostic logs/Insights
 Control commands are requests to the service to retrieve information that is not necessarily data in the database tables, or to modify the service state, etc. In addition, they can be used to manage Azure Data Explorer.
-The first character of the text of a request determines if the request is a control command or a query. Control commands must start with the dot (.) character, and no query may start by that character. <br>
+The first character of the text of a request determines if the request is a control command or a query. Control commands must start with the dot (.) character, and no query may start by that character. <br><br>
 [Management (control commands) overview](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/)
 
 - The ‘.show queries’ command returns a list of queries that have reached a final state, and that the user invoking the command has access to see.
@@ -149,6 +149,7 @@ Write a control command to show details on all tables in the database. How many 
 What is the original size of the data, per table? What is the [extent](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/extents-overview) size of the data, per table <br>
 Hint: | extend TotalExtentSizeInMB = format_bytes(TotalExtentSize, 0, "MB") <br>
 
+Reference:
 [.show table details](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/show-table-details-command) <br>
 [format_bytes()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/format-bytesfunction)
 
@@ -159,7 +160,6 @@ Hint: | extend TotalExtentSizeInMB = format_bytes(TotalExtentSize, 0, "MB") <br>
 Sizing a cluster appropriately is critical to the performance of Azure Data Explorer. A static cluster size can lead to under-utilization or over-utilization, neither of which is ideal. Because demand on a cluster can’t be predicted with absolute accuracy, it's better to scale a cluster, adding and removing capacity and CPU resources with changing demand.
 
 There are two workflows for scaling an Azure Data Explorer cluster:
-
 Horizontal scaling, also called scaling in and out.
 Vertical scaling, also called scaling up and down. 
 
@@ -184,7 +184,7 @@ To Configure vertical scaling, in the Azure portal, go to your Azure Data Explor
 In the Scale up window, you will see a list of available SKUs for your cluster.
 Please note that the vertical scaling process can take up to 30 minutes, and during that time your cluster will be suspended.
 Scaling down can harm your cluster performance. Each SKU offers a distinct SSD and CPU ratio to help you correctly size their deployment and build cost optimal solutions for their enterprise analytical workload.  There are four types of SKUs: types of storage optimized, compute optimized, heavy compute and isolated compute.</br>
-<img src="/assets/imaegs/ScaleUp.png" width="550"></br>
+<img src="/assets/imaegs/ScaleUp.png" width="550"><br><br>
 [Choosing Cluster SKU](https://docs.microsoft.com/en-us/azure/data-explorer/manage-cluster-choose-sku)
 
 ---
@@ -197,7 +197,7 @@ Security roles define which security principals (users and applications) have pe
 
 ---
 ### Task 1: Security roles management
-Run a command to list the principals that lists all security principals which have some access to the table LogisticsTelemetryExtended.<br>
+Run a command to list the principals that lists all security principals which have some access to the table LogisticsTelemetryExtended.<br><br>
 [Show security roles management](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#show-command)
 
 ---
