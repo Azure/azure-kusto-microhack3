@@ -24,7 +24,7 @@ In this chalenge we will use 3 capbilities of Azure Data Explorer:
 Instead of writing a query every time to retrieve the last known value for every device, create a materialized view containing the last known value for every device (the last record for each deviceId, based on the enqueuedTime column)
 
 [Materialized views - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview) </br>
-[Create materialized view - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-create) </br>
+[.create materialized view - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-create) </br>
 Use arg_max(). See examples of [arg_min() (aggregation function) - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/arg-min-aggfunction)
 
 -----
@@ -38,7 +38,7 @@ There are 2 ways to query a materialized view: query the entire view or query th
 ---
 ### Task 3: User defined Functions (Stored Functions) 🎓
 
-As part of the second microhack, task 9, you wrote a query that finds out how many records startswith "x", per device ID (aggregated by device ID) and renderd a piechart. Create a stored function that will contain the code of this query. Make sure the function works. </br></br>
+As part of the second microhack, task 9, you wrote a query that finds out how many records startswith "x", per device ID (aggregated by device ID) and render a pie chart. Create a stored function that will contain the code of this query. Make sure the function works. </br></br>
 
 See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/functions) article.
 
