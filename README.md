@@ -39,6 +39,7 @@ There are 2 ways to query a materialized view: query the entire view or query th
 ### Task 3: User defined Functions (Stored Functions) 🎓
 
 As part of the second microhack, task 9, you wrote a query that finds out how many records startswith "x", per device ID (aggregated by device ID) and renderd a piechart. Create a stored function that will contain the code of this query. Make sure the function works. </br>
+
 See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/functions) article.
 
 ---
@@ -50,7 +51,7 @@ For more information about external tables, please refer to [External table](htt
 ---
 ### Task 5: Querying an external table 🎓
 
-Write a query that uses the external table, and finds out how many device IDs start with "x". <br> [Querying an external table](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data#querying-an-external-table)
+Write a query that uses the external table you created, and finds out how many device IDs start with "x". <br> [Querying an external table](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data#querying-an-external-table)
 
 ---
 ---
@@ -196,20 +197,22 @@ Security roles define which security principals (users and applications) have pe
 
 ---
 ### Task 1: Security roles management
-Run a command to list the principals that lists all security principals which have some access to the table LogisticsTelemetryExtended.
+Run a command to list the principals that lists all security principals which have some access to the table LogisticsTelemetryExtended.<br>
 [Show security roles management](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#show-command)
 
 ---
-### Task 2: Assigning roles
+### Task 2: Assigning roles using KQL
 
 Run a command to assign a database "view" role to one of your colleagues participating in the microhack. Once the permission has been granted, ensure that the colleague has access to the table. In the following sections, we will see how you can restrict the access based on row level security.
 
-[Managing database security roles](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#managing-database-security-roles)
+[Managing database security roles](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#managing-database-security-roles)<br>
 [Principals and Identity Providers](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/access-control/principals-and-identity-providers)
 
-In addition to the control commands, the database permissions can also be set in the Azure portal. From the cluster page, click the "Databases" blade, select the data base, and click on the "Permissions" blade. This is the data plane management. <br>
-Apart from managing the data plane, it is also possible to manage the permissions at the cluster-level. Such cluster-level permissions are part of the control plane.<br>
-Cluster level permissions (for example, set admin permissions for *all* the databases) can be modified via the Azure portal (or via Azure CLI/ARM REST API). You cannot use control commands to set cluster-level permissions.<br>
+---
+### Task 3: Assigning roles using the Azure portal
+
+In addition to the control commands, the database permissions can also be set in the Azure portal. From the cluster page, click the "Databases" blade, select the database, and click on the "Permissions" blade. <br>
+Cluster level permissions (for example, set admin permissions for *all* the databases of the cluster) can be modified via the Azure portal (or via Azure CLI/ARM REST API). You cannot use control commands (KQL) to set cluster-level permissions.<br>
 To set these permissions, go to your cluster page in the Azure portal, and click on the “Permissions" blade (under 'Security + networking')
 
 [Role based Authorization](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/access-control/role-based-authorization)
