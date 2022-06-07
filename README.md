@@ -43,13 +43,13 @@ As part of the second microhack, task 9, you wrote a query that finds out how ma
 See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/functions) article.
 
 ---
-### Task 4: Create an external table 🎓
+### Task 4: Create an external table 
 
 In Microhack 1, task 3, you used the “One-click” UI (User Interfaces) to create a data connection to Azure blob storage. Use the SAS URL of the same blob storage, but this time you will [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table).</br></br>
 For more information about external tables, please refer to [External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) and [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data)
 
 ---
-### Task 5: Querying an external table 🎓
+### Task 5: Querying an external table 
 
 Write a query that uses the external table you created, and finds out how many device IDs start with "x". <br><br> [Querying an external table](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data#querying-an-external-table)
 
@@ -88,7 +88,7 @@ Alter the cache policy of the table LogisticsTelemetryExtended to 60 days.
 [.alter table cache policy command - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/alter-table-cache-policy-command)
 
 ---
-### Task 3: Query cold data with hot windows 🎓
+### Task 3: Query cold data with hot windows 
 Although querying cold data is possible, the data is queried faster when it's in local SSD (the hot cache), particularly for range queries that scan large amounts of data. 
 
 To query cold data, ADX process a loading step that requires accessing a storage tier with much higher latency than the local disk. When the query is limited to a small time window, often called "point-in-time" queries, the amount of data to be retrieved will usually be small, and the query will complete quickly. For example, forensic analyses querying telemetry on a given day in the past fall under this category. The impact on the query duration depends on the size of data that is pulled from storage, and can be significant. 
@@ -117,7 +117,7 @@ The first character of the text of a request determines if the request is a cont
 - The '.show tables details' command returns  a set that contains the specified table or all tables in the database with a detailed summary of each table's properties.
 
 ---
-### Task 2: Use .show queries
+### Task 2: Use .show queries 🎓
 
 Write a command to count the number queries that you run (use the User column), in the past 7 day.
 
@@ -125,7 +125,7 @@ Reference:
 [.show queries](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/queries)
 
 ---
-### Task 3: Use .journal commands
+### Task 3: Use .journal commands 🎓
 
 Write a command to show the details on the materlized view that you created erlier. When did you create the materlized view? <br>
 Hint: use the 'Event' and the 'EventTimestamp' columns.
@@ -134,7 +134,7 @@ Reference:
 [.show journal](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/journal)
 
 ---
-### Task 4: Use .show commands
+### Task 4: Use .show commands 🎓
 
 Write a command to count the number commands that you run (use the User column), in the past 7 day.
 
@@ -143,7 +143,7 @@ Reference:
 
 
 ---
-### Task 5: Table details and size
+### Task 5: Table details and size 🎓
 
 Write a control command to show details on all tables in the database. How many tables are in your cluster? <br>
 What is the original size of the data, per table? What is the [extent](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/extents-overview) size of the data, per table <br>
@@ -195,12 +195,12 @@ Authorization (Cluster, Table level permissions)
 Security roles define which security principals (users and applications) have permissions to operate on a secured resource such as a database or a table, and what operations are permitted. For example, principals that have the database viewer security role for a specific database can query and view all entities of that database. Managing the permissions of database table is part of the data plane management.
 
 ---
-### Task 1: Security roles management
+### Task 1: Security roles management 🎓
 Run a command to list the principals that lists all security principals which have some access to the table LogisticsTelemetryExtended.<br><br>
 [Show security roles management](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#show-command)
 
 ---
-### Task 2: Assigning roles using KQL
+### Task 2: Assigning roles using KQL 🎓
 
 Run a command to assign a database "view" role to one of your colleagues participating in the microhack. Once the permission has been granted, ensure that the colleague has access to the table. In the following sections, we will see how you can restrict the access based on row level security.
 
