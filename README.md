@@ -150,8 +150,7 @@ What is the original size of the data, per table? What is the [extent](https://d
 Hint: | extend TotalExtentSizeInMB = format_bytes(TotalExtentSize, 0, "MB") <br>
 
 Reference:
-[.show table details](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/show-table-details-command) <br>
-[format_bytes()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/format-bytesfunction)
+[.show table details](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/show-table-details-command) and [format_bytes()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/format-bytesfunction)
 
 ---
 ---
