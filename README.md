@@ -117,7 +117,7 @@ The first character of the text of a request determines if the request is a cont
 
 - The ‘.show queries’ command returns a list of queries that have reached a final state, and that the user invoking the command has access to see.
 - The ‘.show commands' command returns a table of the admin commands that have reached a final state.  The TotalCpu columns  is the value of the total CPU clock time (User mode + Kernel mode) consumed by this command.
-- The '.show journal' command returns a table contains information about metadata operations that are done on the Azure Data Explorer database. The metadata operations can result from a control command that a user executed, or internal control commands that the system executed, such as drop extents by retention
+- The '.show journal' command returns a table that contains information about metadata operations that are done on the Azure Data Explorer database. The metadata operations can result from a control command that a user executed, or internal control commands that the system executed, such as drop extents by retention
 - The '.show tables details' command returns  a set that contains the specified table or all tables in the database with a detailed summary of each table's properties.
 
 ---
