@@ -11,7 +11,7 @@ This Microhack is organised into the following 3 challenges:
 ---
 ## Challenge 1: Materialized views, Functions, External Tables
 
-In this chalenge we will use 3 capbilities of Azure Data Explorer:
+In this challenge we will use 3 capbilities of Azure Data Explorer:
 - **Materialized views** expose an aggregation query over a source table, or over another materialized view. Materialized views always return an up-to-date result of the aggregation query (always fresh). Querying a materialized view is more performant than running the aggregation directly over the source table.
 
 - **User-defined functions** are reusable subqueries that can be defined as part of the query itself (ad-hoc functions), or persisted as part of the database metadata (stored functions). User-defined functions are invoked through a name, are provided with zero or more input arguments (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function body.
@@ -42,7 +42,7 @@ There are 2 ways to query a materialized view: query the entire view or query th
 ---
 ### Task 3: User defined Functions (Stored Functions) 🎓
 
-As part of the second microhack, task 9, you wrote a query that finds out how many records startswith "x", per device ID (aggregated by device ID) and render a pie chart. Create a stored function that will contain the code of this query. Make sure the function works. </br></br>
+As part of the first microhack, task 9, you wrote a query that finds out how many records startswith "x", per device ID (aggregated by device ID) and render a pie chart. Create a stored function that will contain the code of this query. Make sure the function works. </br></br>
 
 See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/functions) article.
 
@@ -85,7 +85,7 @@ Click on the database name. The database page opens. Select "Edit" from the top 
 
 Database policies can be overridden per table using a KQL control command.
 ADX cluster and database are Azure resources. A database is a sub-resource of the cluster, so it can be edited from the portal. Tables are not considered an Azure resource, so they cannot be managed in the portal but via a KQL command.    
-You can always use KQL commands to alter the policies of the entire Cluster/Database/tables. Table level cache policy takes precedence over database level which precedence over cluster level.
+You can always use KQL commands to alter the policies of the entire Cluster/Database/tables. Table level cache policy takes precedence over database level which takes precedence over cluster level.
 
 Alter the cache policy of the table LogisticsTelemetryExtended to 60 days.
 
@@ -95,7 +95,7 @@ Alter the cache policy of the table LogisticsTelemetryExtended to 60 days.
 ### Task 3: Query cold data with hot windows 
 Although querying cold data is possible, the data is queried faster when it's in local SSD (the hot cache), particularly for range queries that scan large amounts of data. 
 
-To query cold data, ADX process a loading step that requires accessing a storage tier with much higher latency than the local disk. When the query is limited to a small time window, often called "point-in-time" queries, the amount of data to be retrieved will usually be small, and the query will complete quickly. For example, forensic analyses querying telemetry on a given day in the past fall under this category. The impact on the query duration depends on the size of data that is pulled from storage, and can be significant. 
+To query cold data, ADX processes a loading step that requires accessing a storage tier with much higher latency than the local disk. When the query is limited to a small time window, often called "point-in-time" queries, the amount of data to be retrieved will usually be small, and the query will complete quickly. For example, forensic analyses querying telemetry on a given day in the past fall under this category. The impact on the query duration depends on the size of data that is pulled from storage, and can be significant. 
 
 But, if you're scanning a large amount of cold data, query performance could benefit from using the ‘hot windows’ feature, which lets you efficiently query cold data.
 
@@ -117,7 +117,7 @@ The first character of the text of a request determines if the request is a cont
 
 - The ‘.show queries’ command returns a list of queries that have reached a final state, and that the user invoking the command has access to see.
 - The ‘.show commands' command returns a table of the admin commands that have reached a final state.  The TotalCpu columns  is the value of the total CPU clock time (User mode + Kernel mode) consumed by this command.
-- The '.show journal' command return contains information about metadata operations that are done on the Azure Data Explorer database. The metadata operations can result from a control command that a user executed, or internal control commands that the system executed, such as drop extents by retention
+- The '.show journal' command returns a table that contains information about metadata operations that are done on the Azure Data Explorer database. The metadata operations can result from a control command that a user executed, or internal control commands that the system executed, such as drop extents by retention
 - The '.show tables details' command returns  a set that contains the specified table or all tables in the database with a detailed summary of each table's properties.
 
 ---
