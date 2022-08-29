@@ -107,7 +107,7 @@ To try out this feature, set a hot_window between datetime(2021-01-01) .. dateti
 
 ---
 ---
-## Challenge 3: Control commmands
+## Challenge 3: Control commands
 
 ---
 ### Task 1: .show/diagnostic logs/Insights
