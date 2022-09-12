@@ -49,7 +49,7 @@ See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/k
 ---
 ### Task 4: Create an external table 
 
-In Microhack 1, task 3, you used the “One-click” UI (User Interfaces) to create a data connection to Azure blob storage. Use the SAS URL of the same blob storage, but this time you will [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table).</br></br>
+In Microhack 1,Challenge 2, task 3, you used the “One-click” UI (User Interfaces) to create a data connection to Azure blob storage. Use the SAS URL of LogisticsTelemetry, but this time you will [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table).</br></br>
 For more information about external tables, please refer to [External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) and [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data)
 
 ---
@@ -87,7 +87,7 @@ Database policies can be overridden per table using a KQL control command.
 ADX cluster and database are Azure resources. A database is a sub-resource of the cluster, so it can be edited from the portal. Tables are not considered an Azure resource, so they cannot be managed in the portal but via a KQL command.    
 You can always use KQL commands to alter the policies of the entire Cluster/Database/tables. Table level cache policy takes precedence over database level which takes precedence over cluster level.
 
-Alter the cache policy of the table LogisticsTelemetryExtended to 60 days.
+Alter the cache policy of the table LogisticsTelemetryManipulated to 60 days.
 
 [.alter table cache policy command - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/alter-table-cache-policy-command)
 
@@ -200,7 +200,7 @@ Security roles define which security principals (users and applications) have pe
 
 ---
 ### Task 1: Security roles management 🎓
-Run a command to list the principals that lists all security principals which have some access to the table LogisticsTelemetryExtended.<br><br>
+Run a command to list the principals that lists all security principals which have some access to the table LogisticsTelemetryManipulated.<br><br>
 [Show security roles management](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#show-command)
 
 ---
@@ -231,7 +231,7 @@ Example:
 ```
 .create-or-alter function RLSForLogisticsTelemetry (){
 let IsInGroup = current_principal_is_member_of('aadgroup=group@fake_domain.com');
-LogisticsTelemetryExtended | where (IsInGroup);
+LogisticsTelemetryManipulated | where (IsInGroup);
 }
 ```
 The following functions are often useful for row_level_security queries:
@@ -244,13 +244,13 @@ Then, you enable the table's row_level_security policy, and use the function tha
 
 For example:
 ```
-.alter table LogisticsTelemetryExtended policy row_level_security enable "RLSForLogisticsTelemetry"
+.alter table LogisticsTelemetryManipulated policy row_level_security enable "RLSForLogisticsTelemetry"
 ```
 
 Now, try querying the table, and see whether the policy filtered the results.
 
 ```
-LogisticsTelemetryExtended | count 
+LogisticsTelemetryManipulated | count 
 ```
 
 ---
