@@ -1,15 +1,20 @@
 # Microhack 3: Advanced KQL, Policies, Security 
 
-This Microhack is organised into the following 3 challenges:
-- Challenge 1: Materialized views, Functions, External Tables
-- Challenge 2: Caching and retention policies
-- Challenge 3: Control commands
-- Challenge 4: Cluster autoScaling
-- Challenge 5: Security (Access control)
-- Challenge 6: Security (Row level security)
+This Microhack is organised into the following 5 challenges:
+- Challenge 7: Materialized views, Functions, External Tables
+- Challenge 8: Caching and retention policies
+- Challenge 9: Control commands
+- Challenge 10: Cluster autoScaling
+- Challenge 11: Security (Access control)
+- Challenge 12: Security (Row level security)
+
 
 ---
-## Challenge 1: Materialized views, Functions, External Tables
+In order to receive the ADX microhack digital badge, you will need to complete the challenges marked with 🎓. Please submit the KQL queries/commands of these challenges in the following link: [Answer sheet - ADX Microhack 3](https://forms.office.com/r/iz4cG1ngni)
+---
+
+---
+## Challenge 7: Materialized views, Functions, External Tables
 
 In this challenge we will use 3 capbilities of Azure Data Explorer:
 - **Materialized views** expose an aggregation query over a source table, or over another materialized view. Materialized views always return an up-to-date result of the aggregation query (always fresh). Querying a materialized view is more performant than running the aggregation directly over the source table.
@@ -17,10 +22,6 @@ In this challenge we will use 3 capbilities of Azure Data Explorer:
 - **User-defined functions** are reusable subqueries that can be defined as part of the query itself (ad-hoc functions), or persisted as part of the database metadata (stored functions). User-defined functions are invoked through a name, are provided with zero or more input arguments (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function body.
 
 - **External table** is a Kusto schema entity that references data stored outside the Azure Data Explorer database. It allows you to query data from external data stores, like Azure Blob Storage or in Azure Data Lake, without ingesting it to your Azure Data Explorer cluster. The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried. 
-
----
-In order to receive the ADX microhack digital badge, you will need to complete the challenges marked with 🎓. Please submit the KQL queries/commands of these challenges in the following link: [Answer sheet - ADX Microhack 3](https://forms.office.com/r/iz4cG1ngni)
----
 
 ---
 ### Task 1: Create a materialized view 🎓
@@ -49,7 +50,7 @@ See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/k
 ---
 ### Task 4: Create an external table 
 
-In Microhack 1,Challenge 2, task 3, you used the “One-click” UI (User Interfaces) to create a data connection to Azure blob storage. Use the SAS URL of LogisticsTelemetry, but this time you will [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table).</br></br>
+In Microhack 1,Challenge 8, task 3, you used the “One-click” UI (User Interface) to create a data connection to Azure blob storage. Use the SAS URL of LogisticsTelemetry, but this time you will [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table).</br></br>
 For more information about external tables, please refer to [External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) and [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data)
 
 ---
@@ -59,7 +60,7 @@ Write a query that uses the external table you created, and finds out how many d
 
 ---
 ---
-## Challenge 2: Caching and retention policies
+## Challenge 8: Caching and retention policies
 
 Among the different policies you can set to the ADX cluster, two policies are of particular importance: retention policy (retention period) and cache policy (cache period).
 First, a policy, is what’s  used to enforce and control the properties of the cluster (or the database/table.)
@@ -107,7 +108,7 @@ To try out this feature, set a hot_window between datetime(2021-01-01) .. dateti
 
 ---
 ---
-## Challenge 3: Control commands
+## Challenge 9: Control commands
 
 ---
 ### Task 1: .show/diagnostic logs/Insights
@@ -158,7 +159,7 @@ Reference:
 
 ---
 ---
-## Challenge 4: Cluster Autoscaling
+## Challenge 10: Cluster Autoscaling
 
 Sizing a cluster appropriately is critical to the performance of Azure Data Explorer. A static cluster size can lead to under-utilization or over-utilization, neither of which is ideal. Because demand on a cluster can’t be predicted with absolute accuracy, it's better to scale a cluster, adding and removing capacity and CPU resources with changing demand.
 
@@ -192,7 +193,7 @@ Scaling down can harm your cluster performance. Each SKU offers a distinct SSD a
 
 ---
 ---
-## Challenge 5: Security (Access control)
+## Challenge 11: Security (Access control)
 
 Authorization (Cluster, Table level permissions)
 
@@ -222,7 +223,7 @@ To set these permissions, go to your cluster page in the Azure portal, and click
 
 ---
 ---
-## Challenge 6: Row Level Security (RLS)
+## Challenge 12: Row Level Security (RLS)
 
 You can use Azure Active Directory group membership or principal details to control access to rows in a specific table.
 To do so, you first create a function. This function will be later applied to the row level security (RLS) policy of your table. Once the RLS policy is enabled on a table, access is entirely replaced by the RLS function that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types of users to whom you want to give access. 
