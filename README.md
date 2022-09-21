@@ -132,7 +132,7 @@ Reference:
 ---
 ### Task 3: Use .journal commands 🎓
 
-Write a command to show the details on the materialized view that you created erlier. When did you create the materialized view? <br>
+Write a command to show the details on the materialized view that you created earlier. When did you create the materialized view? <br>
 Hint: use the 'Event' and the 'EventTimestamp' columns.
 
 Reference:
