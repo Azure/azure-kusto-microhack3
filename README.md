@@ -262,7 +262,7 @@ Be sure they receive no results when they query the table.
 [RLS Policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/rowlevelsecuritypolicy)
 
 ---
-🎉 Congrats! You've completed the ADX Microhack! To earn the dogotal badge, submit the KQL queries/commands of the challenges marked with 🎓: [Answer sheet - ADX Microhack 3](https://forms.office.com/r/iz4cG1ngni)
+🎉 Congrats! You've completed the ADX Microhack! To earn the digital badge, submit the KQL queries/commands of the challenges marked with 🎓: [Answer sheet - ADX Microhack 3](https://forms.office.com/r/iz4cG1ngni)
 
 <details>
 <summary><b>Contributing</b></summary><br>
