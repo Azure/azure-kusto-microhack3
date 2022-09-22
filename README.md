@@ -1,6 +1,6 @@
 # Microhack 3: Advanced KQL, Policies, Security 
 
-This Microhack is organised into the following 5 challenges:
+This Microhack is organized into the following 5 challenges:
 - Challenge 7: Materialized views, Functions, External Tables
 - Challenge 8: Caching and retention policies
 - Challenge 9: Control commands
@@ -16,12 +16,12 @@ In order to receive the ADX microhack digital badge, you will need to complete t
 ---
 ## Challenge 7: Materialized views, Functions, External Tables
 
-In this challenge we will use 3 capbilities of Azure Data Explorer:
+In this challenge we will use 3 capabilities of Azure Data Explorer:
 - **Materialized views** expose an aggregation query over a source table, or over another materialized view. Materialized views always return an up-to-date result of the aggregation query (always fresh). Querying a materialized view is more performant than running the aggregation directly over the source table.
 
 - **User-defined functions** are reusable subqueries that can be defined as part of the query itself (ad-hoc functions), or persisted as part of the database metadata (stored functions). User-defined functions are invoked through a name, are provided with zero or more input arguments (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function body.
 
-- **External table** is a Kusto schema entity that references data stored outside the Azure Data Explorer database. It allows you to query data from external data stores, like Azure Blob Storage or in Azure Data Lake, without ingesting it to your Azure Data Explorer cluster. The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried. 
+- **External table** is a Kusto schema entity that references data stored outside the Azure Data Explorer database. It allows you to query data from external data stores, like Azure Blob Storage or Azure Data Lake, without ingesting it to your Azure Data Explorer cluster. The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried.
 
 ---
 ### Task 1: Create a materialized view 🎓
@@ -132,7 +132,7 @@ Reference:
 ---
 ### Task 3: Use .journal commands 🎓
 
-Write a command to show the details on the materlized view that you created erlier. When did you create the materlized view? <br>
+Write a command to show the details on the materialized view that you created earlier. When did you create the materialized view? <br>
 Hint: use the 'Event' and the 'EventTimestamp' columns.
 
 Reference:
@@ -262,7 +262,7 @@ Be sure they receive no results when they query the table.
 [RLS Policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/rowlevelsecuritypolicy)
 
 ---
-🎉 Congrats! You've completed the ADX Microhack! To earn the dogotal badge, submit the KQL queries/commands of the challenges marked with 🎓: [Answer sheet - ADX Microhack 3](https://forms.office.com/r/iz4cG1ngni)
+🎉 Congrats! You've completed the ADX Microhack! To earn the digital badge, submit the KQL queries/commands of the challenges marked with 🎓: [Answer sheet - ADX Microhack 3](https://forms.office.com/r/iz4cG1ngni)
 
 <details>
 <summary><b>Contributing</b></summary><br>
