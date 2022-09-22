@@ -79,7 +79,7 @@ Go to your Azure Data Explorer cluster resource in the Azure portal. Click on th
 
 Click on the database name. The database page opens. Select "Edit" from the top menu. The side pane allows you to edit the retention and caching periods (policies) of the database. Change the retention to 365 days and the cache to 31 days, and save.
 
-<img src="/assets/imaegs/EditCache.png" width="400">
+<img src="/assets/imaegs/EditCacheAndRetention.png" width="400">
  
  ---
 ### Task 2: change the cache policy via commands (data base or table level) 🎓
