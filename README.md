@@ -10,7 +10,7 @@ This Microhack is organized into the following 5 challenges:
 
 
 ---
-In order to receive the ADX microhack digital badge, you will need to complete the challenges marked with 🎓. Please submit the KQL queries/commands of these challenges in the following link: [Answer sheet - ADX Microhack 3](https://forms.office.com/r/iz4cG1ngni)
+In order to receive the ADX microhack digital badge, you will need to complete the challenges marked with ✅. Please submit the KQL queries/commands of these challenges in the following link: [Answer sheet - ADX Microhack 3](https://forms.office.com/r/iz4cG1ngni)
 ---
 
 ---
@@ -24,7 +24,7 @@ In this challenge we will use 3 capabilities of Azure Data Explorer:
 - **External table** is a Kusto schema entity that references data stored outside the Azure Data Explorer database. It allows you to query data from external data stores, like Azure Blob Storage or Azure Data Lake, without ingesting it to your Azure Data Explorer cluster. The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried.
 
 ---
-### Task 1: Create a materialized view 🎓
+### Task 1: Create a materialized view ✅
 
 Instead of writing a query every time to retrieve the last known value for every device, create a materialized view containing the last known value for every device (the last record for each deviceId, based on the enqueuedTime column)
 
@@ -33,7 +33,7 @@ Instead of writing a query every time to retrieve the last known value for every
 Use arg_max(). See examples of [arg_min() (aggregation function) - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/arg-min-aggfunction)
 
 -----
-### Task 2: Materialized views queries 🎓
+### Task 2: Materialized views queries ✅
 
 There are 2 ways to query a materialized view: query the entire view or query the materialized part only. Try both of them.<br>
 
@@ -41,7 +41,7 @@ There are 2 ways to query a materialized view: query the entire view or query th
 ](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview#materialized-views-queries)
 
 ---
-### Task 3: User defined Functions (Stored Functions) 🎓
+### Task 3: User defined Functions (Stored Functions) ✅
 
 As part of the first microhack, task 9, you wrote a query that finds out how many records startswith "x", per device ID (aggregated by device ID) and render a pie chart. Create a stored function that will contain the code of this query. Make sure the function works. </br></br>
 
@@ -82,7 +82,7 @@ Click on the database name. The database page opens. Select "Edit" from the top 
 <img src="/assets/imaegs/EditCacheAndRetention.png" width="400">
  
  ---
-### Task 2: change the cache policy via commands (data base or table level) 🎓
+### Task 2: change the cache policy via commands (data base or table level) ✅
 
 Database policies can be overridden per table using a KQL control command.
 ADX cluster and database are Azure resources. A database is a sub-resource of the cluster, so it can be edited from the portal. Tables are not considered an Azure resource, so they cannot be managed in the portal but via a KQL command.    
@@ -122,7 +122,7 @@ The first character of the text of a request determines if the request is a cont
 - The '.show tables details' command returns  a set that contains the specified table or all tables in the database with a detailed summary of each table's properties.
 
 ---
-### Task 2: Use .show queries 🎓
+### Task 2: Use .show queries ✅
 
 Write a command to count the number queries that you run (use the User column), in the past 7 day.
 
@@ -130,7 +130,7 @@ Reference:
 [.show queries](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/queries)
 
 ---
-### Task 3: Use .journal commands 🎓
+### Task 3: Use .journal commands ✅
 
 Write a command to show the details on the materialized view that you created earlier. When did you create the materialized view? <br>
 Hint: use the 'Event' and the 'EventTimestamp' columns.
@@ -139,7 +139,7 @@ Reference:
 [.show journal](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/journal)
 
 ---
-### Task 4: Use .show commands 🎓
+### Task 4: Use .show commands ✅
 
 Write a command to count the number commands that you run (use the User column), in the past 7 day.
 
@@ -148,7 +148,7 @@ Reference:
 
 
 ---
-### Task 5: Table details and size 🎓
+### Task 5: Table details and size ✅
 
 Write a control command to show details on all tables in the database. How many tables are in your cluster? <br>
 What is the original size of the data, per table? What is the [extent](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/extents-overview) size of the data, per table <br>
@@ -200,12 +200,12 @@ Authorization (Cluster, Table level permissions)
 Security roles define which security principals (users and applications) have permissions to operate on a secured resource such as a database or a table, and what operations are permitted. For example, principals that have the database viewer security role for a specific database can query and view all entities of that database. Managing the permissions of database table is part of the data plane management.
 
 ---
-### Task 1: Security roles management 🎓
+### Task 1: Security roles management ✅
 Run a command to list the principals that lists all security principals which have some access to the table LogisticsTelemetryManipulated.<br><br>
 [Show security roles management](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#show-command)
 
 ---
-### Task 2: Assigning roles using KQL 🎓
+### Task 2: Assigning roles using KQL ✅
 
 Run a command to assign a database "view" role to one of your colleagues participating in the microhack. Once the permission has been granted, ensure that the colleague has access to the table. In the following sections, we will see how you can restrict the access based on row level security.
 
@@ -262,7 +262,7 @@ Be sure they receive no results when they query the table.
 [RLS Policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/rowlevelsecuritypolicy)
 
 ---
-🎉 Congrats! You've completed the ADX Microhack! To earn the digital badge, submit the KQL queries/commands of the challenges marked with 🎓: [Answer sheet - ADX Microhack 3](https://forms.office.com/r/iz4cG1ngni)
+🎉 Congrats! You've completed the ADX Microhack! To earn the digital badge, submit the KQL queries/commands of the challenges marked with ✅: [Answer sheet - ADX Microhack 3](https://forms.office.com/r/iz4cG1ngni)
 
 <details>
 <summary><b>Contributing</b></summary><br>
