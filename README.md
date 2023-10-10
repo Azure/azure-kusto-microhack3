@@ -9,6 +9,8 @@ This Microhack is organized into the following 6 challenges:
 - Challenge 11: Security (Access control)
 - Challenge 12: Security (Row level security)
 
+Please beware that some of these challenges may not be applicable if you have deployed Azure Data Explorer cluster using the _My Free Cluster_ tier as this tier does not give you access to administer the cluster via the Azure Portal. Either upgrade the cluster to an Azure cluster (this requires an Azure Subscription), use the control commands only, or skip the challenges entirely.
+
 ---
 
 ## In order to receive the ADX microhack digital badge, you will need to complete the challenges marked with 🎓. Please submit the KQL queries/commands of these challenges in the following link: [Answer sheet - ADX Microhack 3](https://forms.office.com/r/iz4cG1ngni)
