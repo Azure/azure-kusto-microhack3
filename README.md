@@ -29,36 +29,41 @@ In this challenge we will use 3 capabilities of Azure Data Explorer:
 
 ### Task 1: Create a Materialized View 🎓
 
-Instead of writing a query every time to retrieve the last known value for every device, create a materialized view containing the last known value for every device (the last record for each `deviceId`, based on the `enqueuedTime` column)
+✍🏻 Instead of writing a query every time to retrieve the last known value for every device, create a materialized view containing the last known value for every device (the last record for each `deviceId`, based on the `enqueuedTime` column)
 
-Hint 1: Use `arg_max()`
+🕵🏻 Hint 1: Use `arg_max()`
 
-[Materialized views - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview)
-[.create materialized view - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-create)
-[arg_max() (aggregation function) - Azure Data Explorer | Microsoft Docs](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/arg-max-aggfunction)
+References:
+
+- [Materialized views - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview)
+- [.create materialized view - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-create)
+- [arg_max() (aggregation function) - Azure Data Explorer | Microsoft Docs](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/arg-max-aggfunction)
 
 ---
 
 ### Task 2: Materialized views queries 🎓
 
-There are two ways to query a materialized view: query the entire view or query the materialized part only. Try both of them.
+✍🏻 There are two ways to query a materialized view: query the entire view or query the materialized part only. Try both of them.
 
-[Materialized views queries
-](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview#materialized-views-queries)
+References:
+
+- [Materialized views queries](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview#materialized-views-queries)
 
 ---
 
 ### Task 3: User-defined Functions (Stored Functions) 🎓
 
-As part of the first microhack, task 9, you wrote a query that finds out how many records start with "x", per device ID (aggregated by device ID) and rendered a pie chart. Create a stored function that will contain the code of this query. Make sure the function works.
+✍🏻 As part of the first microhack, task 9, you wrote a query that finds out how many records start with "x", per device ID (aggregated by device ID) and rendered a pie chart. Create a stored function that will contain the code of this query. Make sure the function works.
 
-See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/functions) article.
+References:
+
+- See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/functions) article.
 
 ---
 
 ### Task 4: Create an External Table
 
-In Microhack 1, Challenge 8, Task 3, you used the "One-click" UI (User Interface) to create a data connection to Azure Blob Storage. Use the SAS URL of `LogisticsTelemetry`, but this time you will [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table).
+✍🏻 In Microhack 1, Challenge 8, Task 3, you used the "One-click" UI (User Interface) to create a data connection to Azure Blob Storage. Use the SAS URL of `LogisticsTelemetry`, but this time you will [create an external table using the Web UI wizard](https://docs.microsoft.com/en-us/azure/data-explorer/external-table).
 
 For more information about external tables, please refer to [External table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) and [query data in Azure Data Lake using Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data).
 
@@ -66,9 +71,11 @@ For more information about external tables, please refer to [External table](htt
 
 ### Task 5: Querying an External Table
 
-Write a query that uses the external table you created, and finds out how many device IDs start with "x".
+✍🏻 Write a query that uses the external table you created, and finds out how many device IDs start with "x".
 
-[Querying an external table](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data#querying-an-external-table)
+References:
+
+- [Querying an external table](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data#querying-an-external-table)
 
 ---
 
@@ -108,9 +115,11 @@ Database policies can be overridden per table using a KQL control command.
 ADX cluster and database are Azure resources. A database is a sub-resource of the cluster, so it can be edited from the portal. Tables are not considered an Azure resource, so they cannot be managed in the portal but via a KQL command.  
 You can always use KQL commands to alter the policies of the entire Cluster/Database/tables. Table level cache policy takes precedence over database level which takes precedence over cluster level.
 
-Alter the cache policy of the table LogisticsTelemetryManipulated to 60 days.
+✍🏻 Alter the cache policy of the table `LogisticsTelemetryManipulated` to 60 days.
 
-[.alter table cache policy command - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/alter-table-cache-policy-command)
+References:
+
+- [.alter table cache policy command - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/alter-table-cache-policy-command)
 
 ---
 
@@ -122,11 +131,13 @@ To query cold data, ADX processes a loading step that requires accessing a stora
 
 But, if you're scanning a large amount of cold data, query performance could benefit from using the ‘hot windows’ feature, which lets you efficiently query cold data.
 
-Hot windows are part of the cache policy commands syntax and are set with the .alter policy caching command.
+Hot windows are part of the cache policy commands syntax and are set with the `.alter policy caching` command.
 
-To try out this feature, set a hot_window between datetime(2021-01-01) .. datetime(2021-02-01)
+✍🏻 To try out this feature, set a hot_window between datetime(2021-01-01) .. datetime(2021-02-01)
 
-[Use hot windows for infrequent queries over cold data in Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/hot-windows)
+References:
+
+- [Use hot windows for infrequent queries over cold data in Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/hot-windows)
 
 ---
 
@@ -137,55 +148,66 @@ To try out this feature, set a hot_window between datetime(2021-01-01) .. dateti
 ### Task 1: .show/diagnostic logs/Insights
 
 Control commands are requests to the service to retrieve information that is not necessarily data in the database tables, or to modify the service state, etc. In addition, they can be used to manage Azure Data Explorer.
-The first character of the text of a request determines if the request is a control command or a query. Control commands must start with the dot (.) character, and no query may start by that character.
 
-[Management (control commands) overview](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/)
+The first character of the text of a request determines if the request is a control command or a query. Control commands must start with the dot (`.`) character, and no query may start by that character.
 
 - The `.show queries` command returns a list of queries that have reached a final state, and that the user invoking the command has access to see.
 - The `.show commands` command returns a table of the admin commands that have reached a final state. The TotalCpu columns is the value of the total CPU clock time (User mode + Kernel mode) consumed by this command.
 - The `.show journal` command returns a table that contains information about metadata operations that are done on the Azure Data Explorer database. The metadata operations can result from a control command that a user executed, or internal control commands that the system executed, such as drop extents by retention
 - The `.show tables details` command returns a set that contains the specified table or all tables in the database with a detailed summary of each table's properties.
 
+✍🏻 Give these queries a go and learn what insights you can retrieve.
+
+References:
+
+- [Management (control commands) overview](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/)
+
 ---
 
 ### Task 2: Use .show queries 🎓
 
-Write a command to count the number queries that you run (use the `User` column), in the past 7 day.
+✍🏻 Write a command to count the number queries that you run (use the `User` column), in the past 7 day.
 
-Reference:
-[.show queries](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/queries)
+References:
+
+- [.show queries](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/queries)
 
 ---
 
 ### Task 3: Use .journal commands 🎓
 
-Write a command to show the details on the materialized view that you created earlier. When did you create the materialized view? <br>
-Hint: use the `Event` and the `EventTimestamp` columns.
+✍🏻 Write a command to show the details on the materialized view that you created earlier. When did you create the materialized view?
 
-Reference:
-[.show journal](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/journal)
+🕵🏻 Hint: use the `Event` and the `EventTimestamp` columns.
+
+References:
+
+- [.show journal](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/journal)
 
 ---
 
 ### Task 4: Use .show commands 🎓
 
-Write a command to count the number commands that you run (use the `User` column), in the past 7 day.
+✍🏻 Write a command to count the number commands that you run (use the `User` column), in the past 7 day.
 
-Reference:
-[.show commands](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/commands)
+References:
+
+- [.show commands](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/commands)
 
 ---
 
 ### Task 5: Table details and size 🎓
 
-Write a control command to show details on all tables in the database. How many tables are in your cluster?
+✍🏻 Write a control command to show details on all tables in the database. How many tables are in your cluster?
 
-What is the original size of the data, per table? What is the [extent](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/extents-overview) size of the data, per table
+🤔 What is the original size of the data, per table? What is the [extent](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/extents-overview) size of the data, per table
 
-Hint: `| extend TotalExtentSizeInMB = format_bytes(TotalExtentSize, 0, "MB")`
+🕵🏻 Hint: `| extend TotalExtentSizeInMB = format_bytes(TotalExtentSize, 0, "MB")`
 
-Reference:
-[.show table details](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/show-table-details-command) and [format_bytes()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/format-bytesfunction)
+References:
+
+- [.show table details](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/show-table-details-command)
+- [format_bytes()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/format-bytesfunction)
 
 ---
 
@@ -197,8 +219,8 @@ Sizing a cluster appropriately is critical to the performance of Azure Data Expl
 
 There are two workflows for scaling an Azure Data Explorer cluster:
 
-1. Horizontal scaling, also called scaling in and out.
-2. Vertical scaling, also called scaling up and down.
+1. Horizontal scaling, also called "scaling in and out".
+2. Vertical scaling, also called "scaling up and down".
 
 ---
 
@@ -206,17 +228,19 @@ There are two workflows for scaling an Azure Data Explorer cluster:
 
 By using horizontal scaling, you can scale the instance count automatically, based on predefined rules and schedules. To specify the autoscale settings for your cluster:
 
-In the Azure portal, go to your Azure Data Explorer cluster resource. Under Settings, select Scale out.
+✍🏻 In the Azure portal, go to your Azure Data Explorer cluster resource. Under Settings, select Scale out.
 
-In the Scale out window, you can select the autoscale method that you want: Manual scale, Optimized autoscale, or Custom autoscale.
+✍🏻 In the Scale out window, you can select the autoscale method that you want: Manual scale, Optimized autoscale, or Custom autoscale.
 
 Optimized autoscale is the recommended autoscale method. This method optimizes cluster performance and costs. If the cluster approaches a state of under-utilization, it will be scaled in. This action lowers costs but keeps performance level. If the cluster approaches a state of over-utilization, it will be scaled out to maintain optimal performance.
 
 To configure Optimized autoscale: select the Optimized autoscale option. Then, select a minimum instance count and a maximum instance count. The cluster auto-scaling ranges between those two numbers, based on load.
 
-<img src="/assets/imaegs/ScaleOut.png" width="550">
+![Scale Out](/assets/imaegs/ScaleOut.png)
 
-[Optimized Autoscale](https://docs.microsoft.com/en-us/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale)
+References:
+
+- [Optimized Autoscale](https://docs.microsoft.com/en-us/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale)
 
 ---
 
@@ -226,11 +250,14 @@ To Configure vertical scaling, in the Azure portal, go to your Azure Data Explor
 
 In the Scale up window, you will see a list of available SKUs for your cluster.
 Please note that the vertical scaling process can take up to 30 minutes, and during that time your cluster will be suspended.
+
 Scaling down can harm your cluster performance. Each SKU offers a distinct SSD and CPU ratio to help you correctly size their deployment and build cost optimal solutions for their enterprise analytical workload. There are four types of SKUs: types of storage optimized, compute optimized, heavy compute and isolated compute.
 
-<img src="/assets/imaegs/ScaleUp.png" width="550">
+![Scale Up](/assets/imaegs/ScaleUp.png)
 
-[Choosing Cluster SKU](https://docs.microsoft.com/en-us/azure/data-explorer/manage-cluster-choose-sku)
+References:
+
+- [Choosing Cluster SKU](https://docs.microsoft.com/en-us/azure/data-explorer/manage-cluster-choose-sku)
 
 ---
 
@@ -246,30 +273,38 @@ Security roles define which security principals (users and applications) have pe
 
 ### Task 1: Security roles management 🎓
 
-Run a command to list the principals that lists all security principals which have some access to the table LogisticsTelemetryManipulated.
+✍🏻 Run a command to list the principals that lists all security principals which have some access to the table `LogisticsTelemetryManipulated`.
 
-[Show security roles management](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#show-command)
+References:
+
+- [Show security roles management](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#show-command)
 
 ---
 
 ### Task 2: Assigning roles using KQL 🎓
 
-Run a command to assign a database "view" role to one of your colleagues participating in the microhack. Once the permission has been granted, ensure that the colleague has access to the table. In the following sections, we will see how you can restrict the access based on row level security.
+✍🏻 Run a command to assign a database "view" role to one of your colleagues participating in the microhack. Once the permission has been granted, ensure that the colleague has access to the table. In the following sections, we will see how you can restrict the access based on row level security.
 
-[Managing database security roles](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#managing-database-security-roles)
-[Principals and Identity Providers](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/access-control/principals-and-identity-providers)
+References:
+
+- [Managing database security roles](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/security-roles#managing-database-security-roles)
+- [Principals and Identity Providers](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/access-control/principals-and-identity-providers)
 
 ---
 
-### Task 3: Assigning roles using the Azure portal
+### Task 3: Assigning roles using the Azure Portal
 
-In addition to the control commands, the database permissions can also be set in the Azure portal. From the cluster page, click the "Databases" blade, select the database, and click on the "Permissions" blade.
+In addition to the control commands, the database permissions can also be set in the Azure portal.
+
+From the cluster page, click the "Databases" blade, select the database, and click on the "Permissions" blade.
 
 Cluster level permissions (for example, set admin permissions for _all_ the databases of the cluster) can be modified via the Azure portal (or via Azure CLI/ARM REST API). You cannot use control commands (KQL) to set cluster-level permissions.
 
-To set these permissions, go to your cluster page in the Azure portal, and click on the “Permissions" blade (under 'Security + networking')
+✍🏻 To set these permissions, go to your cluster page in the Azure portal, and click on the "Permissions" blade (under 'Security + networking')
 
-[Role based Authorization](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/access-control/role-based-authorization)
+References:
+
+- [Role based Authorization](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/access-control/role-based-authorization)
 
 ---
 
@@ -279,7 +314,7 @@ To set these permissions, go to your cluster page in the Azure portal, and click
 
 You can use Azure Active Directory group membership or principal details to control access to rows in a specific table.
 
-To do so, you first create a function. This function will be later applied to the row level security (RLS) policy of your table. Once the RLS policy is enabled on a table, access is entirely replaced by the RLS function that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types of users to whom you want to give access.
+✍🏻 To do so, you first create a function. This function will be later applied to the row level security (RLS) policy of your table. Once the RLS policy is enabled on a table, access is entirely replaced by the RLS function that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types of users to whom you want to give access.
 
 Example:
 
@@ -296,7 +331,7 @@ The following functions are often useful for row_level_security queries:
 - [current_principal_details()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/current-principal-detailsfunction)
 - [current_principal_is_member_of()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/current-principal-ismemberoffunction?pivots=azuredataexplorer)
 
-Then, you enable the table's `row_level_security` policy, and use the function that will be run as part of the policy.
+✍🏻 Then, you enable the table's `row_level_security` policy, and use the function that will be run as part of the policy.
 
 For example:
 
@@ -304,7 +339,7 @@ For example:
 .alter table LogisticsTelemetryManipulated policy row_level_security enable "RLSForLogisticsTelemetry"
 ```
 
-Now, try querying the table, and see whether the policy filtered the results.
+✍🏻 Now, try querying the table, and see whether the policy filtered the results.
 
 ```Kusto
 LogisticsTelemetryManipulated
@@ -315,10 +350,12 @@ LogisticsTelemetryManipulated
 
 ### Task 1
 
-Your colleague who was given access to the database in the previous challenge should no longer have access to it. Change the RLS function accordingly.
+✍🏻 Your colleague who was given access to the database in the previous challenge should no longer have access to it. Change the RLS function accordingly.
 Be sure they receive no results when they query the table.
 
-[RLS Policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/rowlevelsecuritypolicy)
+References:
+
+- [RLS Policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/rowlevelsecuritypolicy)
 
 ---
 
