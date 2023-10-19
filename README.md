@@ -5,7 +5,7 @@ This Microhack is organized into the following 6 challenges:
 - Challenge 7: Materialized views, Functions, External Tables
 - Challenge 8: Caching and retention policies
 - Challenge 9: Control commands
-- Challenge 10: Cluster autoScaling
+- Challenge 10: Cluster Auto Scaling
 - Challenge 11: Security (Access control)
 - Challenge 12: Security (Row level security)
 
@@ -87,9 +87,9 @@ References:
 
 ## Challenge 8: Caching and retention policies
 
-Among the different policies you can set to the ADX cluster, two policies are of particular importance: **retention policy** (retention period) and **cache policy** (cache period). A policy, is what’s used to enforce and control the properties of the cluster (or the database, or table).
+Among the different policies you can set to the ADX cluster, two policies are of particular importance: **retention policy** (retention period) and **cache policy** (cache period). A policy is what's used to enforce and control the properties of the cluster (or the database, or table).
 
-The **retention** policy (gray + red box in the animation) is the time span, in days, for which it’s guaranteed that the data is kept available for querying. The time span is measured from the time that the records are ingested. When the period expires, the records will not be available for querying anymore. In other words, the retention policy defines the period in which the data available to query, measured since ingestion time. Notice that a large retention period may impact the cost.
+The **retention** policy (grey + red box in the animation) is the time span, in days, for which it’s guaranteed that the data is kept available for querying. The time span is measured from the time that the records are ingested. When the period expires, the records will not be available for querying anymore. In other words, the retention policy defines the period in which the data available to query, measured since ingestion time. Notice that a large retention period may impact the cost.
 
 The **cache** policy (red box in the animation), is the time span, in days, for which to keep recently ingested data (which is usually the frequently queried data) available in the hot cache rather than in long term storage (this is also known as cold cache, specifically, it is Azure Blob Storage). Data stored in the hot cache is stored in the local SSD or the RAM of the cluster's virtual machines, very close to the compute nodes. Therefore, it is more readily available for querying. The availability of data in hot cache improves query performance but can potentially increase the cluster cost (as more data is being stored, more VMs are required to store it). In other words, the caching policy defines the period in which data is kept in the hot cache before it is evicted to cold storage.
 
@@ -106,11 +106,11 @@ All the data is always stored in the cold cache, for the duration defined in the
 
 Go to your Azure Data Explorer cluster resource in the Azure portal. Click on the "Databases" blade
 
-<img src="/assets/imaegs/DatabasesBlade.png" width="300">
+<img src="/assets/images/DatabasesBlade.png" width="300">
 
 Click on the database name. The database page opens. Select "Edit" from the top menu. The side pane allows you to edit the retention and caching periods (policies) of the database. Change the retention to 365 days and the cache to 31 days, and save.
 
-<img src="/assets/imaegs/EditCacheAndRetention.png" width="400">
+<img src="/assets/images/EditCacheAndRetention.png" width="400">
  
  ---
 ### Task 2: Change the cache policy via commands (database or table-level) 🎓
@@ -240,7 +240,7 @@ Optimized autoscale is the recommended autoscale method. This method optimizes c
 
 To configure Optimized autoscale: select the Optimized autoscale option. Then, select a minimum instance count and a maximum instance count. The cluster auto-scaling ranges between those two numbers, based on load.
 
-![Scale Out](/assets/imaegs/ScaleOut.png)
+![Scale Out](/assets/images/ScaleOut.png)
 
 References:
 
@@ -257,7 +257,7 @@ Please note that the vertical scaling process can take up to 30 minutes, and dur
 
 Scaling down can harm your cluster performance. Each SKU offers a distinct SSD and CPU ratio to help you correctly size their deployment and build cost optimal solutions for their enterprise analytical workload. There are four types of SKUs: types of storage optimized, compute optimized, heavy compute and isolated compute.
 
-![Scale Up](/assets/imaegs/ScaleUp.png)
+![Scale Up](/assets/images/ScaleUp.png)
 
 References:
 
