@@ -31,15 +31,17 @@ In this challenge we will use 3 capabilities of Azure Data Explorer:
 
 ### Task 1: Create a Materialized View 🎓
 
+📆 Use table: `LogisticsTelemetry`
+
 ✍🏻 Instead of writing a query every time to retrieve the last known value for every device, create a materialized view containing the last known value for every device (the last record for each `deviceId`, based on the `enqueuedTime` column)
 
 🕵🏻 Hint 1: Use `arg_max()`
 
 References:
 
-- [Materialized views - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview)
-- [.create materialized view - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-create)
-- [arg_max() (aggregation function) - Azure Data Explorer | Microsoft Docs](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/arg-max-aggfunction)
+- [Materialized views](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview)
+- [.create materialized view](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-create)
+- [arg_max() aggregation function](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/arg-max-aggfunction)
 
 ---
 
@@ -59,7 +61,7 @@ References:
 
 References:
 
-- See the [create function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/functions) article.
+- [.create function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/functions)
 
 ---
 
@@ -121,7 +123,7 @@ You can always use KQL commands to alter the policies of the entire Cluster/Data
 
 References:
 
-- [.alter table cache policy command - Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/alter-table-cache-policy-command)
+- [.alter table cache policy command](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/alter-table-cache-policy-command)
 
 ---
 
@@ -129,9 +131,9 @@ References:
 
 Although querying cold data is possible, the data is queried faster when it's in local SSD (the hot cache), particularly for range queries that scan large amounts of data.
 
-To query cold data, ADX processes a loading step that requires accessing a storage tier with much higher latency than the local disk. When the query is limited to a small time window, often called "point-in-time" queries, the amount of data to be retrieved will usually be small, and the query will complete quickly. For example, forensic analyses querying telemetry on a given day in the past fall under this category. The impact on the query duration depends on the size of data that is pulled from storage, and can be significant.
+To query cold data, ADX processes a loading step that requires accessing a storage tier with much higher latency than the local disk. When the query is limited to a small time window, often called "point-in-time" queries, the amount of data to be retrieved will usually be small, and the query will complete quickly. For example, forensic analysts querying telemetry on a given day in the past fall under this category. The impact on the query duration depends on the size of data that is pulled from storage, and can be significant.
 
-But, if you're scanning a large amount of cold data, query performance could benefit from using the ‘hot windows’ feature, which lets you efficiently query cold data.
+But, if you're scanning a large amount of cold data, query performance could benefit from using the 'hot windows' feature, which lets you efficiently query cold data.
 
 Hot windows are part of the cache policy commands syntax and are set with the `.alter policy caching` command.
 
@@ -139,7 +141,7 @@ Hot windows are part of the cache policy commands syntax and are set with the `.
 
 References:
 
-- [Use hot windows for infrequent queries over cold data in Azure Data Explorer | Microsoft Docs](https://docs.microsoft.com/en-us/azure/data-explorer/hot-windows)
+- [Use hot windows for infrequent queries over cold data in Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/hot-windows)
 
 ---
 
@@ -353,6 +355,7 @@ LogisticsTelemetryManipulated
 ### Task 1
 
 ✍🏻 Your colleague who was given access to the database in the previous challenge should no longer have access to it. Change the RLS function accordingly.
+
 Be sure they receive no results when they query the table.
 
 References:
